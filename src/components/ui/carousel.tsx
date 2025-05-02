@@ -17,8 +17,15 @@ interface SlideProps {
   setFlippedIndex: (index: number | null) => void;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick, flippedIndex, setFlippedIndex }: SlideProps) => {
-    const slideRef = useRef<HTMLLIElement>(null);
+const Slide = ({
+  slide,
+  index,
+  current,
+  handleSlideClick,
+  flippedIndex,
+  setFlippedIndex,
+}: SlideProps) => {
+  const slideRef = useRef<HTMLLIElement>(null);
   const xRef = useRef(0);
   const yRef = useRef(0);
   const frameRef = useRef<number | null>(null);
@@ -122,7 +129,9 @@ const Slide = ({ slide, index, current, handleSlideClick, flippedIndex, setFlipp
             )}
             <article
               className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
-                current === index ? "opacity-100 visible" : "opacity-0 invisible"
+                current === index
+                  ? "opacity-100 visible"
+                  : "opacity-0 invisible"
               }`}
             >
               <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold relative">
@@ -148,7 +157,8 @@ const Slide = ({ slide, index, current, handleSlideClick, flippedIndex, setFlipp
           >
             <h3 className="text-2xl font-bold mb-4">{title}</h3>
             <p className="text-sm mb-6">
-              Aquí puedes escribir una descripción completa del platillo o servicio.
+              Aquí puedes escribir una descripción completa del platillo o
+              servicio.
             </p>
             <button
               onClick={handleFlipClick}
@@ -169,7 +179,11 @@ interface CarouselControlProps {
   handleClick: () => void;
 }
 
-const CarouselControl = ({ type, title, handleClick }: CarouselControlProps) => {
+const CarouselControl = ({
+  type,
+  title,
+  handleClick,
+}: CarouselControlProps) => {
   return (
     <button
       className={`w-6 h-6 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
