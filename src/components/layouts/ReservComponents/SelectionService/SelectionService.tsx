@@ -10,16 +10,24 @@ export interface Servicio {
 }
 interface SelectionServiceProps {
   onSeleccionar: (servicio: Servicio) => void;
+  isCardExpanded: boolean;
+  onCardToggle: () => void;
 }
 
 export const SelectionService: React.FC<SelectionServiceProps> = ({
   onSeleccionar,
+  onCardToggle,
+  isCardExpanded,
 }) => {
   return (
     <div className={styles.InteractionArea}>
       <div className={styles.CarouselArea}>
         <div className={styles.ExpandableCardDemo}>
-          <ExpandableCardDemo></ExpandableCardDemo>
+          <ExpandableCardDemo
+            onCardToggle={onCardToggle}
+            isCardExpanded={isCardExpanded}
+            onSeleccionar={onSeleccionar}
+          ></ExpandableCardDemo>
         </div>
       </div>
     </div>
