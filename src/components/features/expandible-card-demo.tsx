@@ -43,14 +43,14 @@ export function ExpandableCardDemo() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0  h-full w-full z-10"
           />
         )}
       </AnimatePresence>
       {/* Tarjeta expandida */}
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0  grid place-items-center z-[100]">
+          <div className="fixed inset-0  z-[100] grid place-items-center">
             {/*Opción cerrar pero en dispositivos pequeños */}
             <motion.button
               key={`button-${active.title}-${id}`}
@@ -78,7 +78,7 @@ export function ExpandableCardDemo() {
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
               // estilos de la tarjeta expandida
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-auto"
+              className="w-full max-w-[500px] max-h-[500px]  md:h-auto overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
@@ -86,6 +86,7 @@ export function ExpandableCardDemo() {
                   height={200}
                   src={active.src}
                   alt={active.title}
+                  //Estilo tarjeta expandida
                   className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
                 />
               </motion.div>
@@ -112,7 +113,7 @@ export function ExpandableCardDemo() {
                     layoutId={`button-${active.title}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full bg-green-500 text-white"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -139,7 +140,7 @@ export function ExpandableCardDemo() {
         null}
       </AnimatePresence>
       {/* Lista de tarjetas */}
-      <ul className="max-w-2xl mx-auto w-full gap-4">
+      <ul className="max-w-2xl mx-auto w-full flex flex-col gap-4">
         {/* Recorre cada tarjeta del array cards y las muestra en la lista. Al hacer clic se expande. */}
         {cards.map((card, index) => (
           <motion.div
@@ -147,7 +148,7 @@ export function ExpandableCardDemo() {
             key={`card-${card.title}-${id}`}
             onClick={() => setActive(card)}
             // estilo de cada tarjeta
-            className="p-2 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-[#848282] dark:hover:bg-neutral-800 rounded-xl cursor-pointer border border-black"
           >
             {/*Dentro de cada tarjeta: imagen, título, descripción y botón. */}
             <div className="flex gap-4 flex-col md:flex-row">
@@ -163,21 +164,19 @@ export function ExpandableCardDemo() {
               <div className="">
                 <motion.h3
                   layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left"
+                  className="font-medium text-black  dark:text-neutral-600 text-center md:text-left"
                 >
                   {card.title}
                 </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400 text-center md:text-left"
-                >
+                <motion.p className="text-black text-[14px] dark:text-neutral-400 text-center md:text-left">
                   {card.description}
                 </motion.p>
               </div>
             </div>
             <motion.button
               layoutId={`button-${card.title}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4 md:mt-0"
+              style={{ backgroundColor: "rgba(29, 28, 27, 0.4)" }}
+              className="px-4 py-2 text-sm rounded-full  hover:bg-[#2F2D2D] hover:text-white text-black mt-4 md:mt-0 cursor-pointer border border-black"
             >
               {card.ctaText}
             </motion.button>
@@ -307,6 +306,28 @@ const cards = [
           With a career spanning over a decade, Led Zeppelin has released
           numerous hit albums and singles that have garnered them a massive fan
           following both in the United Kingdom and abroad.
+        </p>
+      );
+    },
+  },
+  {
+    description: "Paquete",
+    title: "Plato 5",
+    src: "https://assets.aceternity.com/demos/toh-phir-aao.jpeg",
+    ctaText: "Reservar",
+    ctaLink: "https://ui.aceternity.com/templates",
+    content: () => {
+      return (
+        <p>
+          &quot;Aawarapan&quot;, a Bollywood movie starring Emraan Hashmi, is
+          renowned for its intense storyline and powerful performances. Directed
+          by Mohit Suri, the film has become a significant work in the Indian
+          film industry. <br /> <br /> The movie explores themes of love,
+          redemption, and sacrifice, capturing the essence of human emotions and
+          relationships. With a gripping narrative and memorable music,
+          &quot;Aawarapan&quot; has garnered a massive fan following both in
+          India and abroad, solidifying Emraan Hashmi&apos;s status as a
+          versatile actor.
         </p>
       );
     },

@@ -18,9 +18,10 @@ export const SelectionService: React.FC<SelectionServiceProps> = ({
   return (
     <div className={styles.InteractionArea}>
       <div className={styles.CarouselArea}>
-        <ExpandableCardDemo></ExpandableCardDemo>
+        <div className={styles.ExpandableCardDemo}>
+          <ExpandableCardDemo></ExpandableCardDemo>
+        </div>
       </div>
-      <div className={styles.ButtonArea}></div>
     </div>
   );
 };

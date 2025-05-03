@@ -2,7 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d9d9d9;
+  background-color: none;
+  border: 1px solid;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
   height: 68vh;
   width: 75vw;
 }
@@ -11,7 +14,28 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  height: 89%;
-  background-color: rgb(182, 179, 179);
-  overflow-y: auto;
+  height: 92%;
+  background-color: rgba(41, 39, 38, 0.473);
+  border: 1px solid;
+  border-radius: 20px;
+}
+.ExpandableCardDemo {
+  height: 90%;
+  width: 60%;
+  overflow-y: auto; /* solo scroll vertical */
+  overflow-x: hidden;
+}
+.ExpandableCardDemo::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ExpandableCardDemo::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ExpandableCardDemo::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
