@@ -15,7 +15,7 @@ interface SelectionServiceProps {
 }
 
 export const SelectionService: React.FC<SelectionServiceProps> = ({
-  onSeleccionar,
+  //onSeleccionar,
   onCardToggle,
   isCardExpanded,
 }) => {
@@ -26,7 +26,7 @@ export const SelectionService: React.FC<SelectionServiceProps> = ({
           <ExpandableCardDemo
             onCardToggle={onCardToggle}
             isCardExpanded={isCardExpanded}
-            onSeleccionar={onSeleccionar}
+            //onSeleccionar={}
           ></ExpandableCardDemo>
         </div>
       </div>

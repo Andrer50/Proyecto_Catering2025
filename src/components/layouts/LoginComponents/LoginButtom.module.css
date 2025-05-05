@@ -5,6 +5,7 @@
   background-color: #8ab0fd;
   border-radius: 10px;
   border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   width: 7.5em;
   height: 2.5em;
 }

@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { SelectionService } from "./SelectionService/SelectionService";
-import { InformationForm } from "./InformationForm/InformationForm";
+import { SelectionService } from "./ProcPredetermined/SelectionService/SelectionService";
+import { InformationForm } from "./ProcPredetermined/InformationForm/InformationForm";
 
-export const ReservProc = ({
-  onCardToggle,
-  isCardExpanded,
-}: {
+interface ReservProcProps {
   onCardToggle: () => void;
   isCardExpanded: boolean;
+}
+export const ReservPredetermined: React.FC<ReservProcProps> = ({
+  onCardToggle,
+  isCardExpanded,
 }) => {
+  //Controlar estado de Pasos del formulario de reserva
   const [paso, setPaso] = useState(1);
   const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
 

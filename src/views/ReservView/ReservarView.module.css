@@ -23,9 +23,9 @@
   justify-content: space-evenly;
   height: 7vh;
   width: 75vw;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* para efecto glass */
   border-radius: 15px;
-  border-color: black;
+
   backdrop-filter: blur(10px);
 }
 .LeftButton {
@@ -35,9 +35,8 @@
   align-items: center;
   width: 40%;
   margin: 10px;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* para efecto glass */
   border-radius: 15px;
-  border-color: black;
 }
 .LeftButton:hover {
   background-color: rgba(29, 28, 27, 0.658);
@@ -48,9 +47,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* para efecto glass */
   border-radius: 15px;
-  border-color: black;
+
   width: 40%;
   margin: 10px;
 }

@@ -2,17 +2,26 @@
 import NavComponent from "@/components/layouts/NavComponents/NavComponent";
 import React from "react";
 import styles from "./ReservarView.module.css";
-import { ReservProc } from "@/components/layouts/ReservComponents/ReservProc";
-import { useState } from "react";
+import { ReservPredetermined } from "@/components/layouts/ReservComponents/ReservPredetermined";
+import { ReservCustomized } from "@/components/layouts/ReservComponents/ReservCustomized";
+import { useState, useEffect } from "react";
 
 export const ReservarView = () => {
+  //Estado para controlar la selección de boton Left o Right
   const [selectedOption, setSelectedOption] = useState<
     "predeterminado" | "personalizado"
   >("predeterminado");
-  const [isCardExpanded, setIsCardExpanded] = useState(false); // Estado para controlar la expansión de la tarjeta
+  // Estado para controlar la expansión de la tarjeta
+  const [isCardExpanded, setIsCardExpanded] = useState(false);
   const handleCardToggle = () => {
-    setIsCardExpanded((prev) => !prev); // Alterna el estado de la tarjeta expandida
+    // Alterna el estado de la tarjeta expandida
+    setIsCardExpanded((prev) => !prev);
   };
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <>
       <div
@@ -41,10 +50,17 @@ export const ReservarView = () => {
             />
           </div>
           <div className={styles.InteractionArea}>
-            <ReservProc
-              onCardToggle={handleCardToggle}
-              isCardExpanded={isCardExpanded}
-            />
+            {isMounted && selectedOption === "predeterminado" ? (
+              <ReservPredetermined
+                onCardToggle={handleCardToggle}
+                isCardExpanded={isCardExpanded}
+              />
+            ) : isMounted ? (
+              <ReservCustomized
+                onCardToggle={handleCardToggle}
+                isCardExpanded={isCardExpanded}
+              />
+            ) : null}
           </div>
         </div>
       </div>
