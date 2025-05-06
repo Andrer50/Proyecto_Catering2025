@@ -7,14 +7,15 @@ import { ReservCustomized } from "@/components/layouts/ReservComponents/ReservCu
 import { useState, useEffect } from "react";
 
 export const ReservarView = () => {
-  //Estado para controlar la selección de boton Left o Right
+  //State to control the selection of Left or Right button
   const [selectedOption, setSelectedOption] = useState<
     "predeterminado" | "personalizado"
   >("predeterminado");
-  // Estado para controlar la expansión de la tarjeta
+  //State to control card expansion
   const [isCardExpanded, setIsCardExpanded] = useState(false);
+
   const handleCardToggle = () => {
-    // Alterna el estado de la tarjeta expandida
+    //Change the state of the card expanded
     setIsCardExpanded((prev) => !prev);
   };
   const [isMounted, setIsMounted] = useState(false);
@@ -25,13 +26,16 @@ export const ReservarView = () => {
   return (
     <>
       <div
+        //Function: If the card is expanded the background becomes dark
         className={`${styles.MainArea} ${
           isCardExpanded ? styles.Darkened : ""
         }`}
       >
         <NavComponent></NavComponent>
         <div className={styles.ContainerForm}>
+          {/*Button Area Predetermined and Customized */}
           <div className={styles.OptionsArea}>
+            {/*Button Area Predetermined */}
             <input
               className={`${styles.LeftButton} ${
                 selectedOption === "predeterminado" ? styles.Selected : ""
@@ -40,6 +44,7 @@ export const ReservarView = () => {
               value="Predeterminado"
               onClick={() => setSelectedOption("predeterminado")}
             />
+            {/*Button Area Customized */}
             <input
               className={`${styles.RightButton} ${
                 selectedOption === "personalizado" ? styles.Selected : ""
@@ -49,6 +54,7 @@ export const ReservarView = () => {
               onClick={() => setSelectedOption("personalizado")}
             />
           </div>
+
           <div className={styles.InteractionArea}>
             {isMounted && selectedOption === "predeterminado" ? (
               <ReservPredetermined

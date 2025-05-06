@@ -1,20 +1,24 @@
 import React from "react";
 import imageMain from "../../assets/images/ImagenMain.jpg";
-import "./MainView.css";
+
 import NavComponent from "../../components/layouts/NavComponents/NavComponent";
 import InformationMainView from "../../components/layouts/InicioComponents/InformationMainView";
-
+import styles from "./MainView.module.css";
 export const MainView = () => {
   return (
-    <div className="body">
-      <div className="column1">
+    //3 Area for the MainView
+    <div className={styles.MainArea}>
+      {/*First Area: Nav */}
+      <div className={styles.NavArea}>
         <NavComponent></NavComponent>
       </div>
-      <div className="column2">
-        <div className="background-column2"></div>
-        <img className="imageMain" src={imageMain.src}></img>
+      {/*Seconda Area: Background and Image */}
+      <div className={styles.ColumnImageArea}>
+        <div className={styles.BackgroundColumnArea}></div>
+        <img className={styles.ImageMain} src={imageMain.src}></img>
       </div>
-      <div className="column3">
+      {/*Third Area: Information Area */}
+      <div className={styles.InformationArea}>
         <InformationMainView></InformationMainView>
       </div>
     </div>

@@ -3,25 +3,16 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "../ui/use-outside-click";
-
-interface menuPackage {
-  title: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-  numberOfPeople: number;
-  stock: number;
-  category: string;
-  tags: string;
-  aditionalServices: string;
-}
+import { menuPackage } from "@/components/Interfaces/MenuPackage";
 
 export function ExpandableCardDemo({
   onCardToggle,
   isCardExpanded,
+  onSeleccionar,
 }: {
   onCardToggle: () => void;
   isCardExpanded: boolean;
+  onSeleccionar: (card: menuPackage) => void;
 }) {
   /*active guarda el estado actual de la tarjeta activa (la expandida). Puede ser un objeto de cards, false o null. */
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
@@ -141,11 +132,11 @@ export function ExpandableCardDemo({
 
                   <motion.a
                     layoutId={`button-${active.title}-${id}`}
-                    //href={active.ctaLink}
+                    onClick={() => onSeleccionar(active)}
                     target="_blank"
                     className="px-4 py-3 text-sm rounded-full bg-[#848282] text-white cursor-pointer"
                   >
-                    Comprar
+                    Elegir
                   </motion.a>
                 </div>
                 {/* Sección de contenido expandido. Puede ser un texto o una función que devuelve JSX. */}

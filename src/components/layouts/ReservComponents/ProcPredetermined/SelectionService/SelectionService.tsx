@@ -1,21 +1,16 @@
 import React from "react";
 import styles from "./SelectionService.module.css";
 import { ExpandableCardDemo } from "@/components/features/expandible-card-demo";
+import { menuPackage } from "@/components/Interfaces/MenuPackage";
 
-export interface Servicio {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  imagen: string;
-}
 interface SelectionServiceProps {
-  onSeleccionar: (servicio: Servicio) => void;
+  onSeleccionar: (card: menuPackage) => void;
   isCardExpanded: boolean;
   onCardToggle: () => void;
 }
 
 export const SelectionService: React.FC<SelectionServiceProps> = ({
-  //onSeleccionar,
+  onSeleccionar,
   onCardToggle,
   isCardExpanded,
 }) => {
@@ -26,7 +21,7 @@ export const SelectionService: React.FC<SelectionServiceProps> = ({
           <ExpandableCardDemo
             onCardToggle={onCardToggle}
             isCardExpanded={isCardExpanded}
-            //onSeleccionar={}
+            onSeleccionar={onSeleccionar}
           ></ExpandableCardDemo>
         </div>
       </div>
