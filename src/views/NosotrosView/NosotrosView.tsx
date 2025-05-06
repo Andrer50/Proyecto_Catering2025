@@ -11,6 +11,7 @@ export const NosotrosView = () => {
     <div className="page-container">
       <NavComponent></NavComponent>
       <div className="area-information">
+        {/*Component NosotrosArea */}
         <NosotrosArea
           title="¿QUIÉNES SOMOS?"
           text="Somos una empresa comprometida con la excelencia y la innovación tecnológica en servicios alimentarios."

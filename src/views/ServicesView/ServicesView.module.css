@@ -1,16 +1,10 @@
-* {
-  padding: 0;
-}
-.nav-secondary {
+.MainArea {
+  margin: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
 }
-.nav-component {
-  width: 70vw;
-}
-
-.area-services {
+.ServicesArea {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../../assets/images/ImagenMain.jpg);
   display: flex;
@@ -23,15 +17,14 @@
   background-position: center;
 }
 
-.area-carousel {
+.CarouselArea {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100em;
   height: 90%;
 }
-.carousel-cards {
+.CarouselCards {
   display: flex;
   align-items: center;
   justify-content: center;

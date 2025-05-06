@@ -54,8 +54,9 @@ export const ReservarView = () => {
               onClick={() => setSelectedOption("personalizado")}
             />
           </div>
-
+              
           <div className={styles.InteractionArea}>
+            {/*According to the selected button, load a form*/}
             {isMounted && selectedOption === "predeterminado" ? (
               <ReservPredetermined
                 onCardToggle={handleCardToggle}

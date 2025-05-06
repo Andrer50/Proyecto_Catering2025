@@ -4,8 +4,13 @@ import { useState, useRef, useId, useEffect } from "react";
 
 interface SlideData {
   title: string;
-  button: string;
+  description: string;
+  price: number;
   src: string;
+  button: string;
+  numberOfPeople: number;
+  category: string;
+  aditionalServices: string;
 }
 
 interface SlideProps {
@@ -80,7 +85,15 @@ const Slide = ({
     event.currentTarget.style.opacity = "1";
   };
 
-  const { src, button, title } = slide;
+  const {
+    src,
+    button,
+    title,
+    description,
+    price,
+    numberOfPeople,
+    aditionalServices,
+  } = slide;
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -128,7 +141,7 @@ const Slide = ({
               <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />
             )}
             <article
-              className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
+              className={`relative p-[4vmin] h-full flex flex-col justify-center items-center text-center transition-opacity duration-1000 ease-in-out ${
                 current === index
                   ? "opacity-100 visible"
                   : "opacity-0 invisible"
@@ -137,12 +150,13 @@ const Slide = ({
               <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold relative">
                 {title}
               </h2>
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-8">
                 <button
                   onClick={handleFlipClick}
-                  className="mt-6 px-4 py-2 w-fit mx-auto sm:text-sm text-black bg-white h-12 border border-transparent text-xs flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]"
+                  className="px-6 py-3 w-fit sm:text-sm text-black bg-white h-12 border border-transparent text-sm flex justify-center items-center rounded-2xl transition duration-300 ease-in-out 
+             hover:bg-neutral-300 hover:scale-105 hover:shadow-xl active:scale-95"
                 >
-                  {button}
+                  <span className="tracking-wide">{button}</span>
                 </button>
               </div>
             </article>
@@ -156,10 +170,22 @@ const Slide = ({
             }}
           >
             <h3 className="text-2xl font-bold mb-4">{title}</h3>
-            <p className="text-sm mb-6">
-              Aquí puedes escribir una descripción completa del platillo o
-              servicio.
-            </p>
+            <div className="">
+              <label>Descripción</label>
+              <p className="text-sm mb-6">{description}</p>
+              <label>
+                Cantidad de Personas:
+                <p className="text-sm mb-6">{numberOfPeople}</p>
+              </label>
+              <label>
+                Servicios Extras:
+                <p className="text-sm mb-6">{aditionalServices}</p>
+              </label>
+              <label>
+                Precio:
+                <p className="text-sm mb-6">{price}</p>
+              </label>
+            </div>
             <button
               onClick={handleFlipClick}
               className="px-4 py-2 bg-black text-white rounded-2xl text-xs hover:shadow-lg transition duration-200"
