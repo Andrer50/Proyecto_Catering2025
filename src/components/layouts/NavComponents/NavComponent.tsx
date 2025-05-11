@@ -8,12 +8,19 @@ import Link from "next/link";
 import { UserButton } from "../LoginComponents/UserButton";
 import { AreaForm } from "../LoginComponents/AreaForm";
 
-export const NavComponent = () => {
+interface NavComponentProps {
+  isCardExpanded: boolean;
+  onCardToggle: () => void;
+}
+export const NavComponent: React.FC<NavComponentProps> = ({
+  isCardExpanded,
+  onCardToggle,
+}) => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
-      <div className={styles.MainArea}>
+      <div className={styles.NavMainArea}>
         <div className={styles.LogoArea}>
           <img className={styles.logo} src={logo.src} />
         </div>

@@ -29,7 +29,7 @@ export function ExpandableCardDemo({
     fetch("http://localhost:8080/menuPackage")
       .then((res) => res.json())
       .then((data: menuPackage[]) => {
-        console.log("Contenido real de la respuesta:", data); // 👈 Verifica que es un array
+        console.log("Contenido real de la respuesta:", data); //  Verifica que es un array
         setCards(data);
       })
       .catch((err) => console.error("Error fetching menu packages:", err));
@@ -42,6 +42,7 @@ export function ExpandableCardDemo({
     }
     // Desactiva el scroll del body si hay una tarjeta activas
     if (active && typeof active === "object") {
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
@@ -50,7 +51,10 @@ export function ExpandableCardDemo({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
   //Usa el hook personalizado para cerrar la tarjeta si haces clic fuera del área expandida (ref).
-  useOutsideClick(ref, () => setActive(null));
+  useOutsideClick(ref, () => {
+    setActive(null);
+    onCardToggle();
+  });
 
   return (
     <>
@@ -61,14 +65,14 @@ export function ExpandableCardDemo({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] "
+            className="fixed inset-0 z-[9998] "
           />
         )}
       </AnimatePresence>
       {/* Tarjeta expandida */}
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0  z-[100] grid place-items-center">
+          <div className="fixed inset-0 z-[9999]  grid place-items-center">
             {/*Opción cerrar pero en dispositivos pequeños */}
             <motion.button
               key={`button-${active.title}-${id}`}
@@ -82,10 +86,10 @@ export function ExpandableCardDemo({
               exit={{
                 opacity: 0,
                 transition: {
-                  duration: 0.05,
+                  duration: 0.03,
                 },
               }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+              className="flex  top-2 right-2 lg:hidden  items-center justify-center bg-white rounded-full h-6 w-6"
               onClick={() => {
                 setActive(null);
                 onCardToggle(); // Llama a la función para alternar el fondo oscuro
@@ -94,12 +98,12 @@ export function ExpandableCardDemo({
               <CloseIcon />
             </motion.button>
 
-            {/*Muestra imagen del artista (animada) */}
+            {/*Muestra card del artista (animada) */}
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
               // estilos de la tarjeta expandida
-              className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] w-full max-w-[500px] max-h-[90vh] overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl"
+              className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2   w-full max-w-[500px] max-h-[90vh] overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl z-[9999]"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
@@ -108,7 +112,7 @@ export function ExpandableCardDemo({
                   src={active.imageUrl}
                   alt={active.title}
                   //Estilo tarjeta expandida
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top "
                 />
               </motion.div>
 
@@ -167,7 +171,10 @@ export function ExpandableCardDemo({
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
-            onClick={() => setActive(card)}
+            onClick={() => {
+              setActive(card);
+              onCardToggle();
+            }}
             // estilo de cada tarjeta
             className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-[#848282] dark:hover:bg-neutral-800 rounded-xl cursor-pointer border border-black"
           >

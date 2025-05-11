@@ -2,12 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(41, 39, 38, 0.473);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* para efecto glass */
-  border-radius: 15px;
+
   backdrop-filter: blur(15px);
   height: 68vh;
-  width: 75vw;
+  width: 55vw;
 }
 .CarouselArea {
   display: flex;
@@ -27,7 +25,7 @@
 
 .ExpandableCardDemo {
   height: 90%;
-  width: 60%;
+  width: 80%;
   overflow-y: auto; /* solo scroll vertical */
 }
 .ExpandableCardDemo::-webkit-scrollbar {

@@ -17,22 +17,32 @@ export const ReservarView = () => {
   const handleCardToggle = () => {
     //Change the state of the card expanded
     setIsCardExpanded((prev) => !prev);
+
+    if (!isCardExpanded) {
+      setIsCardExpanded(true);
+    } else {
+      setIsCardExpanded(false);
+    }
   };
+
+  //State to control if the component is being shown or not
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
   return (
-    <>
-      <div
-        //Function: If the card is expanded the background becomes dark
-        className={`${styles.MainArea} ${
-          isCardExpanded ? styles.Darkened : ""
-        }`}
-      >
-        <NavComponent></NavComponent>
-        <div className={styles.ContainerForm}>
+    <div
+      //Function: If the card is expanded the background becomes dark
+      className={styles.MainArea}
+    >
+      <NavComponent
+        isCardExpanded={isCardExpanded}
+        onCardToggle={handleCardToggle}
+      ></NavComponent>
+      <div className={styles.ContainerForm}>
+        <div className={styles.Area}>
           {/*Button Area Predetermined and Customized */}
           <div className={styles.OptionsArea}>
             {/*Button Area Predetermined */}
@@ -54,7 +64,7 @@ export const ReservarView = () => {
               onClick={() => setSelectedOption("personalizado")}
             />
           </div>
-              
+
           <div className={styles.InteractionArea}>
             {/*According to the selected button, load a form*/}
             {isMounted && selectedOption === "predeterminado" ? (
@@ -71,7 +81,7 @@ export const ReservarView = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ReservarView;
