@@ -37,10 +37,7 @@ export const ReservarView = () => {
       //Function: If the card is expanded the background becomes dark
       className={styles.MainArea}
     >
-      <NavComponent
-        isCardExpanded={isCardExpanded}
-        onCardToggle={handleCardToggle}
-      ></NavComponent>
+      <NavComponent></NavComponent>
       <div className={styles.ContainerForm}>
         <div className={styles.Area}>
           {/*Button Area Predetermined and Customized */}

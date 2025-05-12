@@ -7,6 +7,7 @@ export const NosotrosArea = ({ title, text, image, reverse }:{
   image: string;
   reverse?: boolean;}) => {
   return (
+    //Prop to reverse the elements
     <div className={`${styles.MainArea} ${reverse ? styles.Reverse : ""}`}>
       <div className={styles.SubAreaLeft}>
         <img className={styles.Image} src={image}></img>

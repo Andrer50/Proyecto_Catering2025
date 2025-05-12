@@ -12,10 +12,10 @@ interface NavComponentProps {
   isCardExpanded: boolean;
   onCardToggle: () => void;
 }
-export const NavComponent: React.FC<NavComponentProps> = ({
-  isCardExpanded,
-  onCardToggle,
-}) => {
+export const NavComponent = () => {
+  {
+    /*State to control the show login form */
+  }
   const [showLogin, setShowLogin] = useState(false);
 
   return (
@@ -24,6 +24,7 @@ export const NavComponent: React.FC<NavComponentProps> = ({
         <div className={styles.LogoArea}>
           <img className={styles.logo} src={logo.src} />
         </div>
+
         <div className={styles.NavAndButtom}>
           <nav className={styles.NavArea}>
             <ul className={styles.NavRowArea}>
@@ -43,7 +44,6 @@ export const NavComponent: React.FC<NavComponentProps> = ({
           </nav>
           <div className={styles.LoginArea}>
             <LoginButtom onClick={() => setShowLogin(true)} />
-            {/*<UserButton></UserButton>*/}
           </div>
         </div>
       </div>

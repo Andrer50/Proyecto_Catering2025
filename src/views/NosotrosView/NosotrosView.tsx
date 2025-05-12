@@ -4,7 +4,7 @@ import "./NosotrosView.css";
 import imgNosotros from "../../assets/images/nosotros imagen 5.jpg";
 import imgMision from "../../assets/images/nosotros imagen 3.jpg";
 import imgVision from "../../assets/images/nosotros imagen 4.jpg";
-import NosotrosArea  from "../../components/layouts/NosotrosComponents/NosotrosArea";
+import NosotrosArea from "../../components/layouts/NosotrosComponents/NosotrosArea";
 
 export const NosotrosView = () => {
   return (
