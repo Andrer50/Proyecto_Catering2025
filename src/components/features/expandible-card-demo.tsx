@@ -14,14 +14,14 @@ export function ExpandableCardDemo({
   isCardExpanded: boolean;
   onSeleccionar: (card: menuPackage) => void;
 }) {
-  /*active guarda el estado actual de la tarjeta activa (la expandida). Puede ser un objeto de cards, false o null. */
+  /*Active save the current state of the active card (the expanded). It can be an object of Cards, False or Null. */
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );
   const [cards, setCards] = useState<menuPackage[]>([]);
   /*
-  ref: referencia a la tarjeta expandida (para saber si haces clic fuera de ella).
-  id: ID único para animaciones entre elementos usando framer-motion.
+  ref: Reference to the expanded card (to know if you click outside it).
+  id: Unique ID for animations between elements using Framor-Motion.
  */
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
@@ -29,7 +29,7 @@ export function ExpandableCardDemo({
     fetch("http://localhost:8080/menuPackage")
       .then((res) => res.json())
       .then((data: menuPackage[]) => {
-        console.log("Contenido real de la respuesta:", data); //  Verifica que es un array
+        console.log("Contenido real de la respuesta:", data); //  Verify that it is an array
         setCards(data);
       })
       .catch((err) => console.error("Error fetching menu packages:", err));
@@ -37,10 +37,10 @@ export function ExpandableCardDemo({
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setActive(false); // cerrar con ESC
+        setActive(false); // close with ESC
       }
     }
-    // Desactiva el scroll del body si hay una tarjeta activas
+    // Deactivate the body scroll if there is an active card
     if (active && typeof active === "object") {
       document.body.style.overflow = "hidden";
     } else {
@@ -50,7 +50,7 @@ export function ExpandableCardDemo({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
-  //Usa el hook personalizado para cerrar la tarjeta si haces clic fuera del área expandida (ref).
+  //Use the custom hook to close the card if you click outside the expanded area (REF).
   useOutsideClick(ref, () => {
     setActive(null);
     onCardToggle();
@@ -58,7 +58,7 @@ export function ExpandableCardDemo({
 
   return (
     <>
-      {/* Fondo oscuro detrás de la tarjeta expandida */}
+      {/* Dark background behind the expanded card */}
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -69,11 +69,10 @@ export function ExpandableCardDemo({
           />
         )}
       </AnimatePresence>
-      {/* Tarjeta expandida */}
+      {/* CardExpanded */}
       <AnimatePresence>
         {active && typeof active === "object" ? (
           <div className="fixed inset-0 z-[9999]  grid place-items-center">
-            {/*Opción cerrar pero en dispositivos pequeños */}
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -92,17 +91,17 @@ export function ExpandableCardDemo({
               className="flex  top-2 right-2 lg:hidden  items-center justify-center bg-white rounded-full h-6 w-6"
               onClick={() => {
                 setActive(null);
-                onCardToggle(); // Llama a la función para alternar el fondo oscuro
+                onCardToggle();
               }}
             >
               <CloseIcon />
             </motion.button>
 
-            {/*Muestra card del artista (animada) */}
+            {/*Show Card Expanded */}
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              // estilos de la tarjeta expandida
+              //Card Expanded Style
               className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2   w-full max-w-[500px] max-h-[90vh] overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl z-[9999]"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
@@ -111,12 +110,11 @@ export function ExpandableCardDemo({
                   height={200}
                   src={active.imageUrl}
                   alt={active.title}
-                  //Estilo tarjeta expandida
                   className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top "
                 />
               </motion.div>
 
-              {/*Título, descripción y botón CTA (“Reservar”) que lleva a un enlace externo. */}
+              {/* Card Expanded: Título, descripción y botón CTA (“Reservar”) */}
               <div>
                 <div className="flex justify-between items-start p-4">
                   <div className="">
@@ -143,14 +141,13 @@ export function ExpandableCardDemo({
                     Elegir
                   </motion.a>
                 </div>
-                {/* Sección de contenido expandido. Puede ser un texto o una función que devuelve JSX. */}
+                {/* Expanded content section. It can be a text or function that JSX returns.*/}
                 <div className="pt-4 relative px-4">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    // contenido expandido con scroll
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
                     {/*{typeof active.content === "function"
@@ -161,12 +158,11 @@ export function ExpandableCardDemo({
               </div>
             </motion.div>
           </div>
-        ) : /*Cierra el bloque de tarjeta expandida. */
+        ) : /*Close Card Expanded. */
         null}
       </AnimatePresence>
-      {/* Lista de tarjetas */}
+      {/* Cards List */}
       <ul className="max-w-2xl mx-auto w-full flex flex-col gap-4">
-        {/* Recorre cada tarjeta del array cards y las muestra en la lista. Al hacer clic se expande. */}
         {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
@@ -175,10 +171,10 @@ export function ExpandableCardDemo({
               setActive(card);
               onCardToggle();
             }}
-            // estilo de cada tarjeta
+            // Card style
             className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-[#848282] dark:hover:bg-neutral-800 rounded-xl cursor-pointer border-none shadow-lg"
           >
-            {/*Dentro de cada tarjeta: imagen, título, descripción y botón. */}
+            {/*Card: imagen, título, descripción y botón. */}
             <div className="flex gap-4 flex-col md:flex-row">
               <motion.div layoutId={`image-${card.title}-${id}`}>
                 <img
@@ -214,7 +210,7 @@ export function ExpandableCardDemo({
     </>
   );
 }
-// Icono de cierre (X)
+// Close Icon(X)
 export const CloseIcon = () => {
   return (
     <motion.svg

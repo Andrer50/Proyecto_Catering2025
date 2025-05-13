@@ -1,15 +1,18 @@
 "use client";
 import React, { useState } from "react";
-import { SelectionService } from "./ProcPredetermined/SelectionService/SelectionService";
-import { InformationForm } from "./ProcPredetermined/InformationForm/InformationForm";
+import { SelectionService } from "./SelectionService/SelectionService";
+import { InformationForm } from "./InformationForm/InformationForm";
 import { menuPackage } from "@/components/Interfaces/MenuPackage";
-import { ReservDetails } from "./ProcPredetermined/ReservDetails/ReservDetails";
+import { ReservDetails } from "./ReservDetails/ReservDetails";
 import { FormData } from "@/components/Interfaces/FormDataDefault";
-import { ReservConfirmation } from "./ProcPredetermined/ReservConfirmation/ReservConfirmation";
+import { ReservConfirmation } from "./ReservConfirmation/ReservConfirmation";
+import { IconHttpOptions } from "@tabler/icons-react";
+import { SelectOptionForm } from "../SelectOptionForm";
 
 interface ReservProcProps {
   onCardToggle: () => void;
   isCardExpanded: boolean;
+  onBack: () => void;
 }
 export interface ReservaData {
   servicio: menuPackage | null;
@@ -18,6 +21,7 @@ export interface ReservaData {
 export const ReservPredetermined: React.FC<ReservProcProps> = ({
   onCardToggle,
   isCardExpanded,
+  onBack,
 }) => {
   //State to control the steps
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
@@ -61,22 +65,25 @@ export const ReservPredetermined: React.FC<ReservProcProps> = ({
 
   const handleBackToStep1 = () => setStep(1);
   const handleBackToStep2 = () => setStep(2);
-
+  //function to handle the submit final
   const handleSubmitFinal = (reservaFinal: any) => {
     setStep(4);
   };
   return (
     <>
+      {/*According to the step, a view is shown*/}
       {step === 1 && (
         <SelectionService
           //When the first form is finished, it goes to the second
           onSeleccionar={handleServiceSelected}
           onCardToggle={onCardToggle}
           isCardExpanded={isCardExpanded}
+          onBack={onBack}
         />
       )}
       {step === 2 && reserva.servicio && (
         <InformationForm
+          /*We pass the service to the following component */
           servicio={reserva.servicio}
           initialValues={datosReserva}
           onNext={handleDatosEvento}
@@ -85,6 +92,7 @@ export const ReservPredetermined: React.FC<ReservProcProps> = ({
       )}
       {step === 3 && reserva.servicio && (
         <ReservDetails
+          /*We pass the service to the following component */
           servicio={reserva.servicio}
           datos={datosReserva}
           onBack={handleBackToStep2}

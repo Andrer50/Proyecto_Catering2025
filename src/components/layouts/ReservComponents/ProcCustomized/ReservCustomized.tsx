@@ -1,5 +1,5 @@
 import React from "react";
-import { FirstForm } from "./ProcCustomized/FirstForm/FirstForm";
+import { FirstForm } from "./FirstForm/FirstForm";
 
 interface ReservCustomProps {
   onCardToggle: () => void;
