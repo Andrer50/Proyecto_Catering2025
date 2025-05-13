@@ -138,7 +138,7 @@ export function ExpandableCardDemo({
                     layoutId={`button-${active.title}-${id}`}
                     onClick={() => onSeleccionar(active)}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full bg-[#848282] text-white cursor-pointer"
+                    className="px-4 py-3 text-sm rounded-full bg-[#fd8a26] text-white cursor-pointer"
                   >
                     Elegir
                   </motion.a>
@@ -176,7 +176,7 @@ export function ExpandableCardDemo({
               onCardToggle();
             }}
             // estilo de cada tarjeta
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-[#848282] dark:hover:bg-neutral-800 rounded-xl cursor-pointer border border-black"
+            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-[#848282] dark:hover:bg-neutral-800 rounded-xl cursor-pointer border-none shadow-lg"
           >
             {/*Dentro de cada tarjeta: imagen, título, descripción y botón. */}
             <div className="flex gap-4 flex-col md:flex-row">
@@ -203,8 +203,8 @@ export function ExpandableCardDemo({
             </div>
             <motion.button
               layoutId={`button-${card.title}-${id}`}
-              style={{ backgroundColor: "rgba(29, 28, 27, 0.4)" }}
-              className="px-4 py-2 text-sm rounded-full  hover:bg-[#2F2D2D] hover:text-white text-black mt-4 md:mt-0 cursor-pointer border border-black"
+              style={{ backgroundColor: "#fd8a26" }}
+              className="px-4 py-2 text-sm rounded-full  hover:bg-[#2F2D2D] hover:text-white text-black mt-4 md:mt-0 cursor-pointer border-none shadow-lg"
             >
               Ver Más
             </motion.button>

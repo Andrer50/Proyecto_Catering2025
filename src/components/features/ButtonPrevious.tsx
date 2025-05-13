@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = () => {
+interface ButtonPreviousProps {
+  onClick: () => void;
+}
+const ButtonPrevious: React.FC<ButtonPreviousProps> = ({ onClick }) => {
   return (
     <StyledWrapper>
-      <button className="animated-button">
+      <button className="animated-button" onClick={onClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="arr-2"
           viewBox="0 0 24 24"
         >
-          <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+          <path d="M7.8284 13.0001L13.1924 18.3641L11.7782 19.7783L4 12.0001L11.7782 4.22205L13.1924 5.63627L7.8284 11.0001H20V13.0001H7.8284Z" />
         </svg>
-        <span className="text">Siguiente</span>
+        <span className="text">Anterior</span>
         <span className="circle" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="arr-1"
           viewBox="0 0 24 24"
         >
-          <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+          <path d="M7.8284 13.0001L13.1924 18.3641L11.7782 19.7783L4 12.0001L11.7782 4.22205L13.1924 5.63627L7.8284 11.0001H20V13.0001H7.8284Z" />
         </svg>
       </button>
     </StyledWrapper>
@@ -55,11 +58,11 @@ const StyledWrapper = styled.div`
   }
 
   .animated-button .arr-1 {
-    right: 16px;
+    left: 16px;
   }
 
   .animated-button .arr-2 {
-    left: -25%;
+    right: -25%;
   }
 
   .animated-button .circle {
@@ -78,7 +81,7 @@ const StyledWrapper = styled.div`
   .animated-button .text {
     position: relative;
     z-index: 1;
-    transform: translateX(-12px);
+    transform: translateX(12px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
@@ -89,19 +92,19 @@ const StyledWrapper = styled.div`
   }
 
   .animated-button:hover .arr-1 {
-    right: -25%;
+    left: -25%;
   }
 
   .animated-button:hover .arr-2 {
-    left: 16px;
+    right: 16px;
   }
 
   .animated-button:hover .text {
-    transform: translateX(12px);
+    transform: translateX(-12px);
   }
 
   .animated-button:hover svg {
-    fill: #1e;
+    fill: #1e1e1e;
   }
 
   .animated-button:active {
@@ -116,4 +119,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default Button;
+export default ButtonPrevious;
