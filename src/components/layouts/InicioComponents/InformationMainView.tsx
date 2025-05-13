@@ -10,16 +10,17 @@ export const InformationMainView = () => {
       <div className={styles.ContainerArea}>
         <div className={styles.FirstArea}>
           <div className={styles.InformationArea}>
+            {/*Component Text */}
             <TextGenerateEffectDemo
               words="D'Bolivar Gourmet"
               style={{ fontFamily: "Tienne, sans-serif", fontSize: "70px" }}
             ></TextGenerateEffectDemo>
-            <p className={styles.FirstText}>
+            <div className={styles.FirstText}>
               <TextGenerateEffectDemo
                 words="Sabores que enamoran, eventos que inspiran"
                 style={{ fontFamily: "Italiana, sans-serif", fontSize: "30px" }}
               ></TextGenerateEffectDemo>
-            </p>
+            </div>
             <p className={styles.SecondText}>Reserva tu catering ahora!!</p>
             <input
               className={styles.ReservButtom}
