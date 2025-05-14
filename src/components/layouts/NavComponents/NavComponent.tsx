@@ -7,6 +7,7 @@ import { LoginButtom } from "../LoginComponents/LoginButtom";
 import Link from "next/link";
 import { UserButton } from "../LoginComponents/UserButton";
 import { AreaForm } from "../LoginComponents/AreaForm";
+import UserDropdown from "@/components/features/UserDropdown";
 
 interface NavComponentProps {
   isCardExpanded: boolean;
@@ -37,13 +38,11 @@ export const NavComponent = () => {
               <li className={styles.NavItem}>
                 <Link href="/nosotros">Nosotros</Link>{" "}
               </li>
-              <li className={styles.NavItem}>
-                <Link href="/reservar">Reservar</Link>{" "}
-              </li>
             </ul>
           </nav>
           <div className={styles.LoginArea}>
-            <LoginButtom onClick={() => setShowLogin(true)} />
+            {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
+            <UserDropdown></UserDropdown>
           </div>
         </div>
       </div>

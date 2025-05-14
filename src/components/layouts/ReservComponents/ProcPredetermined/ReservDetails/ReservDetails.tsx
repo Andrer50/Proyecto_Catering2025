@@ -32,6 +32,7 @@ export const ReservDetails: React.FC<ReservDetailsProps> = ({
   onBack,
   onSubmitFinal,
 }) => {
+  //Function to handle the submit
   const handleSubmit = () => {
     onSubmitFinal({
       ...datos,
@@ -70,8 +71,8 @@ export const ReservDetails: React.FC<ReservDetailsProps> = ({
             <strong>Dirección del Evento:</strong> {datos.direccion}
           </p>
           <div className={styles.ButtonArea}>
-            <ButtonPrevious onClick={onBack} />
-            <ButtonNext onClick={handleSubmit} />
+            <ButtonPrevious texto="Anterior" onClick={onBack} />
+            <ButtonNext texto="Reservar" onClick={handleSubmit} />
           </div>
         </div>
       </div>

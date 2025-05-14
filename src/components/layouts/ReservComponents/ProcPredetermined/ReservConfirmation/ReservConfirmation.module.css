@@ -29,6 +29,7 @@
   justify-content: center;
   align-items: start;
   width: 60%;
+  gap: 1em;
 }
 .ConfirmationArea h5 {
   font-size: 1em;

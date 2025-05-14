@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 interface ButtonPreviousProps {
+  texto: string;
   onClick: () => void;
 }
-const ButtonPrevious: React.FC<ButtonPreviousProps> = ({ onClick }) => {
+const ButtonPrevious: React.FC<ButtonPreviousProps> = ({ onClick, texto }) => {
   return (
     <StyledWrapper>
       <button className="animated-button" onClick={onClick}>
@@ -15,7 +16,7 @@ const ButtonPrevious: React.FC<ButtonPreviousProps> = ({ onClick }) => {
         >
           <path d="M7.8284 13.0001L13.1924 18.3641L11.7782 19.7783L4 12.0001L11.7782 4.22205L13.1924 5.63627L7.8284 11.0001H20V13.0001H7.8284Z" />
         </svg>
-        <span className="text">Anterior</span>
+        <span className="text">{texto}</span>
         <span className="circle" />
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -27,7 +27,7 @@ export const SelectionService: React.FC<SelectionServiceProps> = ({
             onSeleccionar={onSeleccionar}
           ></ExpandableCardDemo>
         </div>
-        <ButtonPrevious onClick={onBack}></ButtonPrevious>
+        <ButtonPrevious texto="Anterior" onClick={onBack}></ButtonPrevious>
       </div>
     </div>
   );

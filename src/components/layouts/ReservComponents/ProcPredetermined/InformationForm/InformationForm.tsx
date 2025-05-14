@@ -20,6 +20,7 @@ export const InformationForm: React.FC<Props> = ({
   onNext,
   onBack,
 }) => {
+  //State that inherits the initial values
   const [tipoEvento, setTipoEvento] = useState(initialValues.tipoEvento);
   const [telefono, setTelefono] = useState(initialValues.telefono);
   const [fecha, setFecha] = useState(initialValues.fecha);
@@ -53,6 +54,7 @@ export const InformationForm: React.FC<Props> = ({
     <div className={styles.InteractionArea}>
       <div className={styles.ServiceInfo}>
         <h2>Servicio Seleccionado</h2>
+        {/*Show Service Selected */}
         <Card servicio={servicio} />
       </div>
 
@@ -131,8 +133,8 @@ export const InformationForm: React.FC<Props> = ({
           </div>
 
           <div className={styles.ButtonArea}>
-            <ButtonPrevious onClick={onBack} />
-            <ButtonNext onClick={handleNext} />
+            <ButtonPrevious texto="Anterior" onClick={onBack} />
+            <ButtonNext texto="Siguiente" onClick={handleNext} />
           </div>
         </div>
       </form>
