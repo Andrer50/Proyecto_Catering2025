@@ -59,20 +59,22 @@ export function ExpandableCardDemo({
   return (
     <>
       {/* Dark background behind the expanded card */}
+
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9998] "
+            className="fixed top-0 left-0 inset-0 z-[9998] bg-black/30 backdrop-blur-sm "
           />
         )}
       </AnimatePresence>
+
       {/* CardExpanded */}
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 z-[9999]  grid place-items-center">
+          <div className="fixed inset-0   grid place-items-center z-[9999]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -88,7 +90,7 @@ export function ExpandableCardDemo({
                   duration: 0.03,
                 },
               }}
-              className="flex  top-2 right-2 lg:hidden  items-center justify-center bg-white rounded-full h-6 w-6"
+              className="flex  top-2 right-2 lg:hidden  items-center justify-center bg-white rounded-full h-6 w-6 "
               onClick={() => {
                 setActive(null);
                 onCardToggle();
@@ -98,11 +100,12 @@ export function ExpandableCardDemo({
             </motion.button>
 
             {/*Show Card Expanded */}
+
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
               //Card Expanded Style
-              className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2   w-full max-w-[500px] max-h-[90vh] overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl z-[9999]"
+              className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2   w-full max-w-[500px] max-h-[90vh] overflow-auto flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl "
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img

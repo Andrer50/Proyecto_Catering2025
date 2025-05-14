@@ -8,6 +8,7 @@ import Link from "next/link";
 import { UserButton } from "../LoginComponents/UserButton";
 import { AreaForm } from "../LoginComponents/AreaForm";
 import UserDropdown from "@/components/features/UserDropdown";
+import NavBarComponent from "@/components/features/NavBarComponent";
 
 interface NavComponentProps {
   isCardExpanded: boolean;
@@ -27,6 +28,8 @@ export const NavComponent = () => {
         </div>
 
         <div className={styles.NavAndButtom}>
+          <NavBarComponent></NavBarComponent>
+          {/* 
           <nav className={styles.NavArea}>
             <ul className={styles.NavRowArea}>
               <li className={styles.NavItem}>
@@ -40,6 +43,7 @@ export const NavComponent = () => {
               </li>
             </ul>
           </nav>
+          */}
           <div className={styles.LoginArea}>
             {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
             <UserDropdown></UserDropdown>

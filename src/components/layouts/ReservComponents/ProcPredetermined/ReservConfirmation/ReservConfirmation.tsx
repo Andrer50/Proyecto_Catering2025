@@ -4,6 +4,8 @@ import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import Card from "@/components/features/Card";
 import check from "@/assets/images/Check.png";
 import ButtonNext from "@/components/features/ButtonNext";
+import { useRouter } from "next/navigation";
+
 interface ReservConfirmationProps {
   servicio: menuPackage;
 }
@@ -11,6 +13,11 @@ interface ReservConfirmationProps {
 export const ReservConfirmation: React.FC<ReservConfirmationProps> = ({
   servicio,
 }) => {
+  const router = useRouter();
+  const goToHistorial = () => {
+    router.push("/historial");
+  };
+
   return (
     <>
       <div className={styles.InteractionArea}>
@@ -27,7 +34,10 @@ export const ReservConfirmation: React.FC<ReservConfirmationProps> = ({
               Dirijase al Historial de Reservas para hacer el pago y nos
               pondremos en contacto con Usted.
             </p>
-            <ButtonNext texto="Historial de Reservas"></ButtonNext>
+            <ButtonNext
+              onClick={goToHistorial}
+              texto="Historial de Reservas"
+            ></ButtonNext>
           </div>
           <div className={styles.ServiceInfo}>
             <Card servicio={servicio} />

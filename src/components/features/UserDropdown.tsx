@@ -20,7 +20,7 @@ const UserDropdown = () => {
   };
 
   const goToHistorial = () => {
-    router.push("historial");
+    router.push("/historial");
   };
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
@@ -150,6 +150,7 @@ const StyledWrapper = styled.div`
     transition: var(--burger-transition);
     outline: var(--burger-enable-outline-width) solid transparent;
     outline-offset: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
   .popup-window {
