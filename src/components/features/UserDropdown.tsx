@@ -51,13 +51,13 @@ const UserDropdown = () => {
             <ul>
               <li>
                 <button onClick={goToReservar} tabIndex={-1}>
-                  <img src={ReservarImg.src} style={{ width: 25 }}></img>
+                  <img className="imageReservar" src={ReservarImg.src}></img>
                   <span>Reservar</span>
                 </button>
               </li>
               <li>
                 <button onClick={goToHistorial}>
-                  <img src={HistorialImg.src} style={{ width: 25 }}></img>
+                  <img className="imageHistorial" src={HistorialImg.src}></img>
                   <span>Historial de Reservas</span>
                 </button>
               </li>
@@ -82,7 +82,7 @@ const StyledWrapper = styled.div`
     --burger-diameter: 3.125em;
     --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
     --burger-line-transition: 0.3s;
-    --burger-transition: all 0.1s ease-in-out;
+    --burger-transition: all 0.5s ease-in-out;
     --burger-hover-scale: 1.1;
     --burger-active-scale: 0.95;
     --burger-enable-outline-color: var(--burger-bg);
@@ -172,7 +172,7 @@ const StyledWrapper = styled.div`
     left: var(--nav-position-left);
     right: var(--nav-position-right);
     transition: var(--burger-transition);
-    margin-top: 10px;
+    margin-top: 1rem;
     width: 14em;
   }
   .popup:hover .popup-window,
@@ -296,6 +296,38 @@ const StyledWrapper = styled.div`
     transform: scale(var(--nav-active-scale));
     visibility: visible;
     opacity: 1;
+  }
+  .imageReservar {
+    width: 2rem;
+    heigth: 2rem;
+  }
+  .imageHistorial {
+    width: 0.5rem;
+    heigth: 1em;
+  }
+  @media (min-width: 631px) and (max-width: 991px) {
+    .burger {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+    }
+  }
+  @media (min-width: 1421px) {
+    .burger {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+    }
+    .popup-window {
+      margin-top: 3rem;
+      width: 18em;
+    }
+    .popup-window ul li button {
+      font-size: 1.7rem;
+    }
+    .popup-window legend {
+      font-size: 1.2rem;
+    }
   }
 `;
 

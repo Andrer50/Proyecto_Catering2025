@@ -9,7 +9,7 @@ type LoginViewProps = {
 };
 
 export const AreaForm = ({ onClose }: LoginViewProps) => {
-  //Control de Estado de vista
+  //State to control views
   const [view, setView] = useState<"login" | "register">("login");
   return (
     <div className={styles.MainAreaLogin}>

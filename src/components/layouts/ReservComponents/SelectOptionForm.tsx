@@ -22,6 +22,7 @@ export const SelectOptionForm = ({
             </p>
           </div>
           <div className={styles.CardsArea}>
+            {/*According to the select option, a process is shown*/}
             <div onClick={() => onSelectOption("predeterminado")}>
               <RotatingCard
                 texto="Paquetes Catering"

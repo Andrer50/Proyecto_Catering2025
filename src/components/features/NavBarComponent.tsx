@@ -4,9 +4,20 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const NavBarComponent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <StyledWrapper>
       <div className="nav">
+        <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+          ☰
+        </div>
+        {isOpen && (
+          <div className="mobile-menu">
+            <Link href="/">Inicio</Link>
+            <Link href="/servicios">Servicios</Link>
+            <Link href="/nosotros">Nosotros</Link>
+          </div>
+        )}
         <div className="container">
           <div className="btn">
             <Link href="/">Inicio</Link>
@@ -47,31 +58,34 @@ const StyledWrapper = styled.div`
     position: absolute;
     inset: 0;
     pointer-events: none;
+    visibility: hidden;
   }
 
   .rect {
     stroke-dashoffset: 5;
     stroke-dasharray: 0 0 10 40 10 40;
     transition: 0.5s;
-    stroke: black;
+    stroke: transparent;
   }
 
   .nav {
     position: relative;
-    width: 400px;
-    height: 60px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 10em;
+    height: 100%;
+    background-color: black;
   }
 
   .container {
-    position: absolute;
-    inset: 0;
+    flex: 1;
     background: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 0.5em;
+    padding: 0.5em 1em;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .container:hover .outline .rect {
@@ -82,7 +96,7 @@ const StyledWrapper = styled.div`
   }
 
   .btn {
-    padding: 0.5em 1.5em;
+    padding: 0.5em 2.3em;
     color: black;
     cursor: pointer;
     transition: 0.1s;
@@ -116,6 +130,94 @@ const StyledWrapper = styled.div`
     stroke-dasharray: 0 0 10 40 10 40;
     transition: 0.5s !important;
     stroke: black;
+  }
+  .hamburger {
+    display: none;
+    justify-content: center;
+    text-align: center;
+    width: 2em;
+    heigth: 1em;
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: black;
+    z-index: 1000;
+    border: 1px solid black;
+    border-radius: 0.3em;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 630px) {
+    .container {
+      display: none;
+    }
+    .nav {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+    .hamburger {
+      display: flex;
+      font-size: 2rem;
+    }
+
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      position: fixed;
+      top: 6em;
+      left: 0;
+      width: 100vw;
+      padding: 1em;
+      gap: 1em;
+      z-index: 999;
+    }
+
+    .mobile-menu a {
+      font-size: 1.5rem;
+      color: black;
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5em;
+    }
+  }
+  @media (min-width: 631px) and (max-width: 991px) {
+    .container {
+      display: none;
+    }
+    .nav {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+    .hamburger {
+      display: flex;
+      font-size: 2rem;
+    }
+
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      position: fixed;
+      top: 6em;
+      left: 0;
+      width: 100vw;
+      padding: 1em;
+      gap: 1em;
+      z-index: 999;
+    }
+
+    .mobile-menu a {
+      font-size: 1.5rem;
+      color: black;
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5em;
+    }
   }
 `;
 

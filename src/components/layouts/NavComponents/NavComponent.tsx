@@ -9,6 +9,7 @@ import { UserButton } from "../LoginComponents/UserButton";
 import { AreaForm } from "../LoginComponents/AreaForm";
 import UserDropdown from "@/components/features/UserDropdown";
 import NavBarComponent from "@/components/features/NavBarComponent";
+import { useRouter } from "next/router";
 
 interface NavComponentProps {
   isCardExpanded: boolean;
@@ -19,6 +20,7 @@ export const NavComponent = () => {
     /*State to control the show login form */
   }
   const [showLogin, setShowLogin] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
@@ -28,8 +30,16 @@ export const NavComponent = () => {
         </div>
 
         <div className={styles.NavAndButtom}>
-          <NavBarComponent></NavBarComponent>
-          {/* 
+          <div className={styles.Hamburger} onClick={() => setIsOpen(!isOpen)}>
+            ☰
+          </div>
+          {isOpen && (
+            <div className={styles.MobileMenu}>
+              <Link href="/">Inicio</Link>
+              <Link href="/servicios">Servicios</Link>
+              <Link href="/nosotros">Nosotros</Link>
+            </div>
+          )}
           <nav className={styles.NavArea}>
             <ul className={styles.NavRowArea}>
               <li className={styles.NavItem}>
@@ -43,7 +53,7 @@ export const NavComponent = () => {
               </li>
             </ul>
           </nav>
-          */}
+
           <div className={styles.LoginArea}>
             {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
             <UserDropdown></UserDropdown>

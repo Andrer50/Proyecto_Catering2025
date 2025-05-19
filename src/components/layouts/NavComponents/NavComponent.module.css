@@ -1,32 +1,26 @@
 /*Area de Nav*/
 .NavMainArea {
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 15vh;
   justify-content: space-between; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
 }
-.overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-  z-index: 9998; /* Asegúrate de que sea mayor que el NavComponent */
-}
 .NavAndButtom {
   display: flex;
-  width: 50rem;
-  justify-content: space-around;
+  height: 100%;
+  width: 35rem;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .NavArea {
-  background-color: #f1f1f1;
-  border-radius: 12px;
+  background-color: white;
   padding: 0.1rem 1rem; /* Espacio dentro del nav */
-  width: 45vw;
-  height: 2.5em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 35rem;
+  height: 100%;
 }
+
 .NavRowArea {
   display: flex;
   justify-content: space-evenly;
@@ -34,29 +28,227 @@
   height: 100%;
 }
 .NavItem {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   font-family: var(--font-inter), sans-serif;
   list-style: none;
   font-weight: 500;
 }
+.NavItem:hover {
+  background-color: #979797;
+  transition: 0.5s;
+}
+
 .NavItem a:hover {
-  color: white;
+  color: #fd8a26;
+  transition: 0.3s;
 }
 .NavItem a {
   text-decoration: none;
   color: #1d1c1c;
 }
 
-/*Área de Botón login*/
-
+/*Button Login Area*/
 .LoginArea {
   display: flex;
-  padding-left: 2.5rem;
   z-index: 1;
 }
+/*Image Logo*/
 .logo {
-  width: 8em;
+  width: 8rem;
   height: 5em;
 }
 .NavDarkened {
   background-color: rgba(0, 0, 0, 0.6);
+}
+.Hamburger {
+  display: none;
+}
+
+.MobileMenu {
+  display: none;
+}
+/*Celular*/
+@media (max-width: 630px) {
+  .NavMainArea {
+    height: 6em;
+    background-color: white;
+    position: fixed;
+    padding-inline: 1em;
+  }
+  .NavAndButtom {
+    display: flex;
+    width: 10em;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .NavArea {
+    display: none;
+  }
+
+  .LoginArea {
+    display: flex;
+    z-index: 1;
+  }
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .LogoArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6em;
+    height: 6em;
+  }
+  .Hamburger {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 2em;
+    height: 2.9rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: black;
+    z-index: 1000;
+    border: 1px solid black;
+    border-radius: 0.3em;
+  }
+
+  .MobileMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: fixed;
+    top: 6em;
+    left: 0;
+    width: 100vw;
+    padding: 1em;
+    gap: 1em;
+    z-index: 999;
+  }
+
+  .MobileMenu a {
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+  }
+}
+/*Tablets*/
+@media (min-width: 631px) and (max-width: 991px) {
+  .NavMainArea {
+    height: 8rem;
+    background-color: white;
+    position: fixed;
+    padding-inline: 1em;
+  }
+  .NavAndButtom {
+    display: flex;
+    width: 15rem;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .NavArea {
+    display: none;
+  }
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .LogoArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 8rem;
+  }
+  .Hamburger {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 5.5rem;
+    height: 4.5rem;
+    font-size: 2.6rem;
+    cursor: pointer;
+    color: black;
+    z-index: 1000;
+    border: 1px solid black;
+    border-radius: 0.3em;
+  }
+
+  .MobileMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: fixed;
+    top: 6em;
+    left: 0;
+    width: 100vw;
+    padding: 1em;
+    gap: 1em;
+    z-index: 999;
+  }
+
+  .MobileMenu a {
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+  }
+}
+/*Laptops*/
+@media (min-width: 992px) and (max-width: 1420px) {
+  .NavAndButtom {
+    display: flex;
+    width: 60rem;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .NavItem {
+    font-size: 1.5rem;
+  }
+}
+/*Desktops*/
+@media (min-width: 1421px) {
+  .NavMainArea {
+    height: 15vh;
+    justify-content: space-between; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }
+  .NavAndButtom {
+    display: flex;
+    width: 70rem;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .NavArea {
+    width: 60rem;
+  }
+  .NavItem {
+    font-size: 1.8rem;
+  }
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .LogoArea {
+    display: flex;
+    justify-content: center;
+    margin-left: 1em;
+    align-items: center;
+    width: 9rem;
+    height: 9rem;
+  }
+  .LoginArea {
+    margin-right: 1em;
+  }
 }

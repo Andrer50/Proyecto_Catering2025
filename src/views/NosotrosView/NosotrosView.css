@@ -2,12 +2,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-y: hidden;
 }
 .area-information {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
+}
+
+.area-nav-layout {
+  display: none;
 }
 /*-----------------------------------------------------*/
 
@@ -19,4 +24,17 @@
 }
 .area-mision {
   display: flex;
+}
+
+@media (max-width: 650px) {
+  .area-nav-layout {
+    display: flex;
+    height: 5.5em;
+  }
+}
+@media (min-width: 631px) and (max-width: 991px) {
+  .area-nav-layout {
+    display: flex;
+    height: 5.5em;
+  }
 }

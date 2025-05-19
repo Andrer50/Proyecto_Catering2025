@@ -5,11 +5,13 @@ import imgNosotros from "../../assets/images/nosotros imagen 5.jpg";
 import imgMision from "../../assets/images/nosotros imagen 3.jpg";
 import imgVision from "../../assets/images/nosotros imagen 4.jpg";
 import NosotrosArea from "../../components/layouts/NosotrosComponents/NosotrosArea";
+import NavResponsive from "@/components/features/NavBarResponsive";
 
 export const NosotrosView = () => {
   return (
     <div className="page-container">
       <NavComponent></NavComponent>
+      <div className="area-nav-layout"></div>
       <div className="area-information">
         {/*Component NosotrosArea */}
         <NosotrosArea
@@ -17,7 +19,7 @@ export const NosotrosView = () => {
           text="Somos una empresa comprometida con la excelencia y la innovación tecnológica en servicios alimentarios."
           image={imgNosotros.src}
         ></NosotrosArea>
-        <NosotrosArea   
+        <NosotrosArea
           reverse={true}
           title="MISIÓN"
           text="Deleitar paladares y crear momentos inolvidables a través de experiencias gastronómicas excepcionales, utilizando ingredientes de calidad y un servicio personalizado que supere las expectativas de nuestros clientes en cada evento."
