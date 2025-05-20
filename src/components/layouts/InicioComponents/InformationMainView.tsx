@@ -13,13 +13,17 @@ export const InformationMainView = () => {
           <div className={styles.TitleText}>
             <TextGenerateEffectDemo
               words="D'Bolivar Gourmet"
-              style={{ fontFamily: "Tienne, sans-serif", fontSize: "5rem" }}
+              className="lg:text-[34rem]"
+              style={{ fontFamily: "Tienne, sans-serif", fontSize: "4.5rem" }}
             ></TextGenerateEffectDemo>
           </div>
           <div className={styles.FirstText}>
             <TextGenerateEffectDemo
               words="Sabores que enamoran, eventos que inspiran..."
-              style={{ fontFamily: "Italiana, sans-serif", fontSize: "30px" }}
+              style={{
+                fontFamily: "Italiana, sans-serif",
+                fontSize: "1.8rem",
+              }}
             ></TextGenerateEffectDemo>
           </div>
           <p className={styles.SecondText}>Reserva tu catering ahora!!</p>

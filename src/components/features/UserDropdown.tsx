@@ -302,14 +302,32 @@ const StyledWrapper = styled.div`
     heigth: 2rem;
   }
   .imageHistorial {
-    width: 0.5rem;
-    heigth: 1em;
+    width: 2rem;
+    heigth: 2rem;
   }
   @media (min-width: 631px) and (max-width: 991px) {
     .burger {
       width: 4.5rem;
       height: 4.5rem;
       border-radius: 50%;
+    }
+    .popup-window {
+      margin-top: 2rem;
+      width: 21em;
+      left: -30vw;
+    }
+    .popup-window ul li button {
+      font-size: 1.5rem;
+    }
+    .popup-window legend {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1420px) {
+    .popup-window {
+      margin-top: 1rem;
+      width: 17em;
+      left: -14em;
     }
   }
   @media (min-width: 1421px) {
@@ -320,7 +338,8 @@ const StyledWrapper = styled.div`
     }
     .popup-window {
       margin-top: 3rem;
-      width: 18em;
+      width: 24em;
+      left: -20vw;
     }
     .popup-window ul li button {
       font-size: 1.7rem;

@@ -54,7 +54,6 @@
 /*Button Login Area*/
 .LoginArea {
   display: flex;
-  z-index: 1;
 }
 /*Image Logo*/
 .logo {
@@ -206,14 +205,19 @@
 }
 /*Laptops*/
 @media (min-width: 992px) and (max-width: 1420px) {
+  .NavMainArea {
+    justify-content: space-between;
+    padding-inline: 2em;
+  }
   .NavAndButtom {
     display: flex;
-    width: 60rem;
-    justify-content: space-around;
+    width: 50vw;
+    justify-content: center;
     align-items: center;
+    gap: 1em;
   }
   .NavItem {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
   }
 }
 /*Desktops*/
@@ -225,15 +229,18 @@
   }
   .NavAndButtom {
     display: flex;
-    width: 70rem;
-    justify-content: space-around;
+    width: 50vw;
+
+    justify-content: center;
     align-items: center;
+    gap: 3em;
   }
-  .NavArea {
-    width: 60rem;
-  }
+
   .NavItem {
-    font-size: 1.8rem;
+    height: 100%;
+    width: 70%;
+    font-weight: 500;
+    font-size: 1.5vw;
   }
   .logo {
     width: 100%;

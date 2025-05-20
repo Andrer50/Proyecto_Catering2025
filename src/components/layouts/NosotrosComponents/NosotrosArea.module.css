@@ -159,7 +159,7 @@
   }
 }
 
-@media (min-width: 651px) and (max-width: 850px) {
+@media (min-width: 651px) and (max-width: 991px) {
   .MainArea {
     flex-direction: column;
     gap: 1em;
@@ -189,6 +189,14 @@
     text-align: center;
   }
 }
+@media (min-width: 992px) and (max-width: 1420px) {
+  .TextArea h2 {
+    font-size: 4rem;
+  }
+  .TextArea p {
+    font-size: 1.3rem;
+  }
+}
 
 @media (min-width: 1421px) {
   .SubAreaLeft {
@@ -201,5 +209,11 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+  .TextArea h2 {
+    font-size: 7vw;
+  }
+  .TextArea p {
+    font-size: 3vh;
   }
 }
