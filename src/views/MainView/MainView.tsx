@@ -12,6 +12,7 @@ export const MainView = () => {
       <div className={styles.NavArea}>
         <NavComponent></NavComponent>
       </div>
+
       {/*Seconda Area: Background and Image */}
       <div className={styles.ColumnImageArea}>
         <div className={styles.BackgroundColumnArea}></div>

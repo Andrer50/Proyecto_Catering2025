@@ -5,13 +5,12 @@ import imgNosotros from "../../assets/images/nosotros imagen 5.jpg";
 import imgMision from "../../assets/images/nosotros imagen 3.jpg";
 import imgVision from "../../assets/images/nosotros imagen 4.jpg";
 import NosotrosArea from "../../components/layouts/NosotrosComponents/NosotrosArea";
-import NavResponsive from "@/components/features/NavBarResponsive";
 
 export const NosotrosView = () => {
   return (
     <div className="page-container">
       <NavComponent></NavComponent>
-      <div className="area-nav-layout"></div>
+
       <div className="area-information">
         {/*Component NosotrosArea */}
         <NosotrosArea

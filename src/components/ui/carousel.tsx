@@ -147,13 +147,19 @@ const Slide = ({
                   : "opacity-0 invisible"
               }`}
             >
-              <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold relative">
+              <h2 className="text-6xl  md:text-8xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-semibold relative">
                 {title}
               </h2>
               <div className="flex justify-center mt-8">
                 <button
                   onClick={handleFlipClick}
-                  className="px-6 py-3 w-fit sm:text-sm text-black bg-white h-12 border border-transparent text-sm flex justify-center items-center rounded-2xl transition duration-300 ease-in-out 
+                  className="text-sm sm:text-base md:text-lg lg:text-xl
+             px-4 sm:px-6 md:px-8
+             py-2 sm:py-3 md:py-4
+             h-10 sm:h-12 md:h-14
+             w-fit text-black bg-white border border-transparent
+             flex justify-center items-center rounded-2xl
+             transition duration-300 ease-in-out 
              hover:bg-neutral-300 hover:scale-105 hover:shadow-xl active:scale-95"
                 >
                   <span className="tracking-wide">{button}</span>
@@ -169,22 +175,24 @@ const Slide = ({
               transform: "rotateY(180deg)",
             }}
           >
-            <h3 className="text-2xl font-bold mb-4">{title}</h3>
-            <div className="">
-              <label>Descripción</label>
-              <p className="text-sm mb-6">{description}</p>
-              <label>
-                Cantidad de Personas:
-                <p className="text-sm mb-6">{numberOfPeople}</p>
-              </label>
-              <label>
-                Servicios Extras:
-                <p className="text-sm mb-6">{aditionalServices}</p>
-              </label>
-              <label>
-                Precio:
-                <p className="text-sm mb-6">{price}</p>
-              </label>
+            <div className="bg-[gray]">
+              <h3 className=" text-2xl font-bold mb-4">{title}</h3>
+              <div className="flex flex-col justify-start ">
+                <label>Descripción</label>
+                <p className="text-sm mb-6">{description}</p>
+                <label>
+                  Cantidad de Personas:
+                  <p className="text-sm mb-6">{numberOfPeople}</p>
+                </label>
+                <label>
+                  Servicios Extras:
+                  <p className="text-sm mb-6">{aditionalServices}</p>
+                </label>
+                <label>
+                  Precio:
+                  <p className="text-sm mb-6">{price}</p>
+                </label>
+              </div>
             </div>
             <button
               onClick={handleFlipClick}

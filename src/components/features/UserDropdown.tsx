@@ -38,8 +38,7 @@ const UserDropdown = () => {
           <svg
             viewBox="0 0 24 24"
             fill="white"
-            height={20}
-            width={20}
+            style={{ width: 27, height: 27 }}
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z" />
@@ -76,7 +75,7 @@ const StyledWrapper = styled.div`
     --burger-line-width: 1.125em;
     --burger-line-height: 0.125em;
     --burger-offset: 0.625em;
-    --burger-bg: #fd8a26;
+    --burger-bg: #120808;
     --burger-color: #333;
     --burger-line-border-radius: 0.1875em;
     --burger-diameter: 3.125em;
@@ -96,7 +95,7 @@ const StyledWrapper = styled.div`
     --nav-border-width: 0.0625em;
     --nav-shadow-color: rgba(0, 0, 0, 0.2);
     --nav-shadow-width: 0 1px 5px;
-    --nav-bg: #eee;
+    --nav-bg: #C7BCAE;
     --nav-font-family: "Poppins", sans-serif;
     --nav-default-scale: 0.8;
     --nav-active-scale: 1;
@@ -114,7 +113,7 @@ const StyledWrapper = styled.div`
     --nav-button-padding-y: 0.375em;
     --nav-button-border-radius: 0.375em;
     --nav-button-font-size: 17px;
-    --nav-button-hover-bg: #fd8a26;
+    --nav-button-hover-bg: #9b9393;
     --nav-button-hover-text-color: #fff;
     --nav-button-distance: 0.875em;
     /* underline */
@@ -174,6 +173,7 @@ const StyledWrapper = styled.div`
     transition: var(--burger-transition);
     margin-top: 1rem;
     width: 14em;
+    z-index: 1;
   }
   .popup:hover .popup-window,
   .popup:focus-within .popup-window {
@@ -224,17 +224,17 @@ const StyledWrapper = styled.div`
     transition: background 0.2s, color 0.2s;
   }
   .popup-window ul li button:hover {
-    background: #fd8a26;
+    background: #9b9393;
     color: white;
   }
 
   .popup-window ul li button svg {
-    color: #fd8a26;
+    color: #9b9393;
   }
 
   .popup-window ul li:nth-child(1) svg,
   .popup-window ul li:nth-child(2) svg {
-    color: #fd8a26;
+    color: #9b9393;
   }
 
   .popup-window ul li:nth-child(4) svg,
@@ -305,16 +305,21 @@ const StyledWrapper = styled.div`
     width: 2rem;
     heigth: 2rem;
   }
-  @media (min-width: 631px) and (max-width: 991px) {
-    .burger {
-      width: 4.5rem;
-      height: 4.5rem;
-      border-radius: 50%;
+  @media (min-width: 220px) {
+    .burger{
+      width:6vh;
+      height:6vh;
+      border-radius: 50%
+    }
+  @media (min-width: 600px){
+    .burger{
+      width: 8vh;
+      height:8vh;
     }
     .popup-window {
-      margin-top: 2rem;
+      margin-top: 6vw;
       width: 21em;
-      left: -30vw;
+      left: -17em;
     }
     .popup-window ul li button {
       font-size: 1.5rem;

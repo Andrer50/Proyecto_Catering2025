@@ -24,43 +24,49 @@ export const NavComponent = () => {
 
   return (
     <>
-      <div className={styles.NavMainArea}>
-        <div className={styles.LogoArea}>
-          <img className={styles.logo} src={logo.src} />
-        </div>
-
-        <div className={styles.NavAndButtom}>
-          <div className={styles.Hamburger} onClick={() => setIsOpen(!isOpen)}>
-            ☰
+      <div className={styles.MainArea}>
+        <div className={styles.LayoutNav}></div>
+        <div className={styles.NavMainArea}>
+          <div className={styles.LogoArea}>
+            <img className={styles.logo} src={logo.src} />
           </div>
-          {isOpen && (
-            <div className={styles.MobileMenu}>
-              <Link href="/">Inicio</Link>
-              <Link href="/servicios">Servicios</Link>
-              <Link href="/nosotros">Nosotros</Link>
+
+          <div className={styles.NavAndButtom}>
+            <div
+              className={styles.Hamburger}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              ☰
             </div>
-          )}
-          <nav className={styles.NavArea}>
-            <ul className={styles.NavRowArea}>
-              <li className={styles.NavItem}>
+            {isOpen && (
+              <div className={styles.MobileMenu}>
                 <Link href="/">Inicio</Link>
-              </li>
-              <li className={styles.NavItem}>
-                <Link href="/servicios">Servicios</Link>{" "}
-              </li>
-              <li className={styles.NavItem}>
-                <Link href="/nosotros">Nosotros</Link>{" "}
-              </li>
-            </ul>
-          </nav>
+                <Link href="/servicios">Servicios</Link>
+                <Link href="/nosotros">Nosotros</Link>
+              </div>
+            )}
+            <nav className={styles.NavArea}>
+              <ul className={styles.NavRowArea}>
+                <li className={styles.NavItem}>
+                  <Link href="/">Inicio</Link>
+                </li>
+                <li className={styles.NavItem}>
+                  <Link href="/servicios">Servicios</Link>{" "}
+                </li>
+                <li className={styles.NavItem}>
+                  <Link href="/nosotros">Nosotros</Link>{" "}
+                </li>
+              </ul>
+            </nav>
 
-          <div className={styles.LoginArea}>
-            {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
-            <UserDropdown></UserDropdown>
+            <div className={styles.LoginArea}>
+              {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
+              <UserDropdown></UserDropdown>
+            </div>
           </div>
         </div>
+        {showLogin && <AreaForm onClose={() => setShowLogin(false)} />}
       </div>
-      {showLogin && <AreaForm onClose={() => setShowLogin(false)} />}
     </>
   );
 };

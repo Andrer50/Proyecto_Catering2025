@@ -29,7 +29,6 @@
   width: 17vw;
   height: 100%; /* o el alto que desees */
   z-index: 0; /* atrás */
-  background-color: #1d1c1c;
 }
 .ImageMain {
   width: 50vw;
@@ -47,10 +46,13 @@
   grid-area: 1 / 3 / 6 / 6;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 220px) {
   .MainArea {
     display: flex;
     flex-direction: column;
+  }
+  .NavArea {
+    display: flex;
   }
   .BackgroundColumnArea {
     display: none;
@@ -59,10 +61,13 @@
   .ColumnImageArea {
     display: none;
   }
+  .ImageMain {
+    display: none;
+  }
   .InformationArea {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 85vh;
     justify-content: center;
     align-items: center;
   }

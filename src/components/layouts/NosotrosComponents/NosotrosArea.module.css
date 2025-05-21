@@ -1,25 +1,22 @@
 /*Area Nosotros*/
 .MainArea {
-  flex-grow: 1;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1d1c1c;
-  padding-inline: 2em;
-  gap: 2em;
+  padding: 2vh;
   height: 85vh;
+  width: 100vw;
 }
 /*Area Columna Izquierda */
 .SubAreaLeft {
   display: flex;
   justify-content: center;
-  width: 50%;
-  padding: 1em;
 }
 .Image {
-  width: 90%;
-  height: 30em;
+  width: 100%;
+  height: 100%;
   object-fit: cover; /* o 'contain' dependiendo del caso */
   border-radius: 12px;
 }
@@ -28,192 +25,86 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  height: 20rem;
   color: white;
 }
 .TextArea h2 {
-  font-family: Tienne, sans-serif;
-  font-size: 5.5rem;
+  font-family: "Italiana", sans-serif;
+  font-weight: 100;
   text-align: center;
 }
 .TextArea p {
-  font-family: Jacques Francois, sans-serif;
-  font-size: 1.7em;
+  font-family: "Italiana", sans-serif;
+  font-weight: 100;
   text-align: center;
   white-space: normal;
   word-break: break-word;
 }
 
-.Reverse {
-  flex-direction: row-reverse;
-}
-@media (max-width: 440px) {
+@media (min-width: 220px) {
   .MainArea {
-    flex-direction: column;
-    align-items: center;
-    gap: 3em;
-  }
-  .SubAreaLeft {
-    display: flex;
-    justify-content: center;
-    width: 23em;
-    height: 20em;
-  }
-  .Image {
-    width: 100%;
-    height: 100%;
-  }
-
-  .TextArea {
-    width: 100%;
-    height: 16em;
-    gap: 1em;
-  }
-  .TextArea h2 {
-    font-size: 2rem;
-  }
-  .TextArea p {
-    width: 17em;
-    font-size: 1.3rem;
-  }
-}
-/*
-@media (max-width: 440px) and (min-height: 900px) {
-  .MainArea {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3em;
-  }
-  .SubAreaLeft {
-    display: flex;
-    justify-content: center;
-    width: 25em;
-    height: 20em;
-  }
-  .Image {
-    width: 100%;
-    height: 100%;
-  }
-  .SubAreaRight {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .TextArea {
-    width: 100%;
-    height: 16em;
-  }
-
-  .TextArea p {
-    display: flex;
-    font-family: Jacques Francois, sans-serif;
-    font-size: 1.2em;
-    width: 17em;
-    text-align: center;
-    white-space: normal;
-    word-break: break-word;
-  }
-}*/
-
-@media (min-width: 441px) and (max-width: 650px) {
-  .MainArea {
-    display: flex;
     flex-direction: column;
     gap: 0;
-    padding-top: 10vh;
   }
   .SubAreaLeft {
-    display: flex;
-    justify-content: center;
-    width: 27em;
-    height: 25em;
-  }
-  .Image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+    width: 40vh;
+    height: 40vh;
+    padding: 2vh;
   }
 
   .TextArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 25em;
+    width: 90vw;
+    height: 35vh;
   }
   .TextArea h2 {
-    font-family: Tienne, sans-serif;
-    font-size: 3rem;
-    text-align: center;
+    font-size: 7vh;
   }
   .TextArea p {
-    font-family: Jacques Francois, sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-    white-space: normal;
-    word-break: break-word;
+    font-size: 2vh;
+    font-style: 500;
   }
 }
 
-@media (min-width: 651px) and (max-width: 991px) {
+@media (min-width: 600px) {
+  .SubAreaLeft {
+    width: 85vw;
+    height: 50vh;
+  }
+}
+@media (min-width: 1024px) {
   .MainArea {
-    flex-direction: column;
-    gap: 1em;
-    padding-top: 10vh;
+    padding: 7vh;
+    flex-direction: row;
+    gap: 5vh;
+  }
+  .Reverse {
+    flex-direction: row-reverse;
   }
   .SubAreaLeft {
-    display: flex;
-    justify-content: center;
-    width: 39em;
-    height: 32em;
-  }
-  .Image {
-    height: 100%;
-    width: 100%;
+    padding: 5vh;
+    width: 45vw;
+    height: 70vh;
   }
   .TextArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 25em;
+    width: 45vw;
   }
   .TextArea h2 {
-    font-family: Tienne, sans-serif;
-    font-size: 3rem;
-    text-align: center;
-  }
-}
-@media (min-width: 992px) and (max-width: 1420px) {
-  .TextArea h2 {
-    font-size: 4rem;
+    font-size: 9vh;
+    width: 45vw;
   }
   .TextArea p {
-    font-size: 1.3rem;
+    font-size: 3.5vh;
+    font-weight: 100;
   }
 }
 
 @media (min-width: 1421px) {
   .SubAreaLeft {
-    display: flex;
-    justify-content: center;
-    width: 45rem;
-    height: 39rem;
-  }
-  .Image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+    padding: 3vh;
   }
   .TextArea h2 {
-    font-size: 7vw;
+    font-size: 10vh;
   }
   .TextArea p {
-    font-size: 3vh;
+    font-size: 3.5vh;
   }
 }
