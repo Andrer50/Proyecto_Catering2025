@@ -22,6 +22,9 @@ const UserDropdown = () => {
   const goToHistorial = () => {
     router.push("/historial");
   };
+  const goToUsuarioInfo = () => {
+    router.push("/gestionarusuario");
+  };
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsOpen(false);
@@ -58,6 +61,12 @@ const UserDropdown = () => {
                 <button onClick={goToHistorial}>
                   <img className="imageHistorial" src={HistorialImg.src}></img>
                   <span>Historial de Reservas</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={goToUsuarioInfo}>
+                  <img className="imageUsuario"></img>
+                  <span>Gestionar Usuario</span>
                 </button>
               </li>
             </ul>
