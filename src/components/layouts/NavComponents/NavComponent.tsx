@@ -2,7 +2,12 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./NavComponent.module.css";
-import logo from "../../../assets/images/LogoBolivar.png";
+import logo from "../../../assets/images/Logo Blanco.png";
+import imageCarouselMobile1 from "@/assets/images/ImageMobileCarousel1.png";
+import imageCarouselMobile2 from "@/assets/images/ImageMobileCarousel2.png";
+import imageCarouselMobile3 from "@/assets/images/ImageMobileCarousel3.png";
+import imageCarouselMobile4 from "@/assets/images/ImageMobileCarousel4.png";
+import imageCarouselMobile5 from "@/assets/images/ImageMobileCarousel5.png";
 import { LoginButtom } from "../LoginComponents/LoginButtom";
 import Link from "next/link";
 import { UserButton } from "../LoginComponents/UserButton";
@@ -10,6 +15,7 @@ import { AreaForm } from "../LoginComponents/AreaForm";
 import UserDropdown from "@/components/features/UserDropdown";
 import NavBarComponent from "@/components/features/NavBarComponent";
 import { useRouter } from "next/router";
+import UserDropdownMobile from "@/components/features/UserDropDownMobile";
 
 interface NavComponentProps {
   isCardExpanded: boolean;
@@ -62,6 +68,7 @@ export const NavComponent = () => {
             <div className={styles.LoginArea}>
               {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
               <UserDropdown></UserDropdown>
+              <UserDropdownMobile></UserDropdownMobile>
             </div>
           </div>
         </div>

@@ -320,6 +320,9 @@ const StyledWrapper = styled.div`
       height:6vh;
       border-radius: 50%
     }
+    .popup{
+      display:none;
+    }
   @media (min-width: 600px){
     .burger{
       width: 8vh;

@@ -1,13 +1,12 @@
 .MainArea {
-  display: grid;
-  grid-template-columns: 0.7fr 1.1fr repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.Header {
+  display: flex;
+  height: 9vh;
+  background-color: #1d1c1c;
+  color: white;
 }
 
 .NavArea {

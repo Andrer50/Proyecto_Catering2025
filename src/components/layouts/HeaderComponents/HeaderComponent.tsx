@@ -1,0 +1,41 @@
+import React from "react";
+import styles from "./HeaderComponent.module.css";
+import "font-awesome/css/font-awesome.min.css";
+
+export const HeaderComponent = () => {
+  return (
+    <>
+      <div className={styles.layout}></div>
+      <header className={styles.Header}>
+        <ul>
+          <li>
+            <a>
+              <span>
+                Llamenos hoy! al <i className="fa fa-phone"></i> 99999999
+              </span>
+            </a>
+            <a className={styles.SpamEmail}>
+              <i className="fa fa-envelope-o"></i>
+              <span>dbolivargourmet@gmail.com</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a>
+              <i className="fa fa-facebook"></i>
+            </a>
+            <a>
+              <i className="fa fa-twitter"></i>
+            </a>
+            <a>
+              <i className="fa fa-instagram"></i>
+            </a>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
+      </header>
+    </>
+  );
+};

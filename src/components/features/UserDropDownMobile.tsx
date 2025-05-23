@@ -1,0 +1,180 @@
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { useRouter } from "next/navigation";
+import ReservarImg from "@/assets/images/ReservarIcon.png";
+import HistorialImg from "@/assets/images/HistorialReservaIcon.png";
+
+const UserDropdownMobile = () => {
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  const goToReservar = () => router.push("/reservar");
+  const goToHistorial = () => router.push("/historial");
+  const goToUsuarioInfo = () => router.push("/gestionarusuario");
+
+  // Detectar clic fuera del menú para cerrarlo
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <StyledWrapper ref={popupRef}>
+      <div className="popup">
+        <button onClick={() => setIsOpen(!isOpen)} className="burger">
+          <svg
+            viewBox="0 0 24 24"
+            fill="white"
+            style={{ width: 27, height: 27 }}
+          >
+            <path d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z" />
+          </svg>
+        </button>
+
+        {isOpen && (
+          <nav className="popup-window">
+            <legend>Opciones</legend>
+            <ul>
+              <li>
+                <button onClick={goToReservar}>
+                  <img className="icon" src={ReservarImg.src} alt="Reservar" />
+                  <span>Reservar</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={goToHistorial}>
+                  <img
+                    className="icon"
+                    src={HistorialImg.src}
+                    alt="Historial"
+                  />
+                  <span>Historial de Reservas</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={goToUsuarioInfo}>
+                  <img
+                    className="icon"
+                    src="/path/to/user-icon.svg"
+                    alt="Usuario"
+                  />
+                  <span>Gestionar Usuario</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        )}
+      </div>
+    </StyledWrapper>
+  );
+};
+
+const StyledWrapper = styled.div`
+  .popup {
+    position: relative;
+  }
+
+  .burger {
+    width: 7vh;
+    height: 7vh;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px white solid;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  .popup-window {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #c7bcae;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    z-index: 100;
+    width: 85vw;
+    max-width: 300px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 14vh;
+  }
+
+  .popup-window legend {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+
+  .popup-window ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .popup-window li {
+    margin-bottom: 0.75rem;
+  }
+
+  .popup-window button {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: background 0.3s;
+  }
+
+  .popup-window button:hover {
+    background-color: #9b9393;
+    color: white;
+  }
+
+  .icon {
+    width: 3vh;
+    height: 3vh;
+    object-fit: contain;
+  }
+  @media (min-width: 220px) {
+    .burger{
+      width:7vh;
+      height:7vh;
+      border-radius: 50%
+    }
+    
+  @media (min-width:600px) {
+    .popup-window {
+      right: 0.5rem;
+      top: 4rem;
+      width: calc(100vw - 2rem);
+    }
+
+    .popup-window button {
+      font-size: 1.1rem;
+    }
+
+    .popup-window legend {
+      font-size: 0.9rem;
+    }
+  }
+`;
+
+export default UserDropdownMobile;
