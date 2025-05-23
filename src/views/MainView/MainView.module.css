@@ -8,43 +8,12 @@
   background-color: #1d1c1c;
   color: white;
 }
-
-.NavArea {
-  grid-area: 1 / 1 / 2 / 6;
-  z-index: 1;
-  position: relative;
+.CarouselMobile {
+  display: flex;
 }
-/*------------------------------------------------------------*/
-.ColumnImageArea {
-  grid-area: 1 / 2 / 6 / 3;
-  z-index: 0;
-  position: relative;
+.CarouselDesktop {
+  display: none;
 }
-.BackgroundColumnArea {
-  top: 0;
-  left: 50%; /* puedes ajustar */
-  transform: translateX(15%);
-  background-color: #1d1c1c;
-  width: 17vw;
-  height: 100%; /* o el alto que desees */
-  z-index: 0; /* atrás */
-}
-.ImageMain {
-  width: 50vw;
-  height: 50vh;
-  border-radius: 50%;
-  object-fit: cover;
-  position: absolute;
-  transform: translate(-1%, -150%);
-  z-index: 0; /* al frente */
-  border: 15px solid #1d1c1c;
-}
-
-/*------------------------------------------------------------*/
-.InformationArea {
-  grid-area: 1 / 3 / 6 / 6;
-}
-
 @media (min-width: 220px) {
   .MainArea {
     display: flex;
@@ -69,5 +38,13 @@
     height: 85vh;
     justify-content: center;
     align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+  .CarouselMobile {
+    display: none;
+  }
+  .CarouselDesktop {
+    display: flex;
   }
 }

@@ -11,18 +11,18 @@ export const HeaderComponent = () => {
           <li>
             <a>
               <span>
-                Llamenos hoy! al <i className="fa fa-phone"></i> 99999999
+                Llamenos hoy! al <i className="fa fa-phone"></i> 924343195
               </span>
             </a>
             <a className={styles.SpamEmail}>
               <i className="fa fa-envelope-o"></i>
-              <span>dbolivargourmet@gmail.com</span>
+              <span>DBolivarGourmet@gmail.com</span>
             </a>
           </li>
         </ul>
         <ul>
           <li>
-            <a>
+            <a href="https://www.facebook.com/DbolivarGourmet">
               <i className="fa fa-facebook"></i>
             </a>
             <a>

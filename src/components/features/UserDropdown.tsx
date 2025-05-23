@@ -3,8 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import ReservarImg from "@/assets/images/ReservarIcon.png";
-import HistorialImg from "@/assets/images/HistorialReservaIcon.png";
+import ReservarImg from "@/assets/images/ReservaWhite.png";
+import HistorialImg from "@/assets/images/HistorialReservaWhite.png";
+import UserEditImg from "@/assets/images/UserEditWhite.png";
 
 const UserDropdown = () => {
   const router = useRouter();
@@ -65,7 +66,7 @@ const UserDropdown = () => {
               </li>
               <li>
                 <button onClick={goToUsuarioInfo}>
-                  <img className="imageUsuario"></img>
+                  <img className="imageUsuario" src={UserEditImg.src}></img>
                   <span>Gestionar Usuario</span>
                 </button>
               </li>
@@ -167,18 +168,15 @@ const StyledWrapper = styled.div`
     opacity: 0;
     position: absolute;
     padding: var(--nav-padding-y) var(--nav-padding-x);
-    background: var(--nav-bg);
+    background-color: rgba(26, 26, 26, 0.78); 
     font-family: var(--nav-font-family);
     color: var(--nav-text-color);
     border-radius: var(--nav-border-radius);
-    box-shadow: var(--nav-shadow-width) var(--nav-shadow-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: var(--nav-border-width) solid var(--nav-border-color);
-    top: calc(
-      var(--burger-diameter) + var(--burger-enable-outline-width) +
-        var(--burger-enable-outline-offset)
-    );
+    top: 7.5vh;
     left: var(--nav-position-left);
-    right: var(--nav-position-right);
+    right: 10vh;
     transition: var(--burger-transition);
     margin-top: 1rem;
     width: 14em;
@@ -212,7 +210,8 @@ const StyledWrapper = styled.div`
     background: none;
     display: flex;
     align-items: center;
-    color: var(--burger-color);
+    color:white;
+    font-family: "Italiana", sans-serif;
     font-size: var(--nav-button-font-size);
     padding: var(--nav-button-padding-y) var(--nav-button-padding-x);
     white-space: nowrap;
@@ -306,11 +305,15 @@ const StyledWrapper = styled.div`
     visibility: visible;
     opacity: 1;
   }
-  .imageReservar {
+  .imageReservar  {
     width: 2rem;
     heigth: 2rem;
   }
   .imageHistorial {
+    width: 2rem;
+    heigth: 2rem;
+  }
+  .imageUsuario{
     width: 2rem;
     heigth: 2rem;
   }
@@ -324,6 +327,7 @@ const StyledWrapper = styled.div`
       display:none;
     }
   @media (min-width: 600px){
+  
     .burger{
       width: 8vh;
       height:8vh;
@@ -340,11 +344,14 @@ const StyledWrapper = styled.div`
       font-size: 1rem;
     }
   }
-  @media (min-width: 992px) and (max-width: 1420px) {
+  @media (min-width:1024px) {
+    .popup{
+      display:flex;
+    }
     .popup-window {
-      margin-top: 1rem;
-      width: 17em;
-      left: -14em;
+      margin-top: 3vh;
+      width: 44vh;
+      left: -17rem;
     }
   }
   @media (min-width: 1421px) {
@@ -354,9 +361,9 @@ const StyledWrapper = styled.div`
       border-radius: 50%;
     }
     .popup-window {
-      margin-top: 3rem;
-      width: 24em;
-      left: -20vw;
+      margin-top: 3vh;
+      width: 45vh;
+      left: -30vh;
     }
     .popup-window ul li button {
       font-size: 1.7rem;

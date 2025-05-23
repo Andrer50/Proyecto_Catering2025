@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-import ReservarImg from "@/assets/images/ReservarIcon.png";
-import HistorialImg from "@/assets/images/HistorialReservaIcon.png";
-
+import ReservarImg from "@/assets/images/ReservaWhite.png";
+import HistorialImg from "@/assets/images/HistorialReservaWhite.png";
+import UserEditImg from "@/assets/images/UserEditWhite.png";
 const UserDropdownMobile = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -64,11 +64,7 @@ const UserDropdownMobile = () => {
               </li>
               <li>
                 <button onClick={goToUsuarioInfo}>
-                  <img
-                    className="icon"
-                    src="/path/to/user-icon.svg"
-                    alt="Usuario"
-                  />
+                  <img className="icon" src={UserEditImg.src} alt="Usuario" />
                   <span>Gestionar Usuario</span>
                 </button>
               </li>
@@ -94,22 +90,19 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
     border: 1px white solid;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }
 
   .popup-window {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: #c7bcae;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    top: 7.5vh;
+    right: 0;
+    background-color: rgba(26, 26, 26, 0.78); 
     padding: 1rem;
     z-index: 100;
-    width: 85vw;
-    max-width: 300px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 14vh;
   }
 
@@ -123,10 +116,14 @@ const StyledWrapper = styled.div`
     list-style: none;
     padding: 0;
     margin: 0;
+    
   }
 
   .popup-window li {
     margin-bottom: 0.75rem;
+    color:white;
+    font-family: "Italiana", sans-serif;
+    
   }
 
   .popup-window button {
@@ -136,7 +133,8 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1rem;
+    font-size: 2.4vh;
+    
     cursor: pointer;
     padding: 0.5rem 0.75rem;
     border-radius: 0.375rem;
@@ -149,24 +147,19 @@ const StyledWrapper = styled.div`
   }
 
   .icon {
-    width: 3vh;
-    height: 3vh;
+    width: 4vh;
+    height: 4vh;
     object-fit: contain;
   }
   @media (min-width: 220px) {
     .burger{
       width:7vh;
       height:7vh;
-      border-radius: 50%
+      
     }
     
   @media (min-width:600px) {
-    .popup-window {
-      right: 0.5rem;
-      top: 4rem;
-      width: calc(100vw - 2rem);
-    }
-
+    
     .popup-window button {
       font-size: 1.1rem;
     }
@@ -175,6 +168,11 @@ const StyledWrapper = styled.div`
       font-size: 0.9rem;
     }
   }
+    @media(min-width:1024px){
+      .popup{
+        display:none;
+      }
+    }
 `;
 
 export default UserDropdownMobile;
