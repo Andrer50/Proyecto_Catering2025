@@ -20,7 +20,9 @@ export const MainView = () => {
   return (
     //3 Area for the MainView
     <div className={styles.MainArea}>
-      <HeaderComponent></HeaderComponent>
+      <div className={styles.Header}>
+        <HeaderComponent></HeaderComponent>
+      </div>
       <div className={styles.CarouselArea}>
         <div className={styles.CarouselMobile}>
           <NavComponent></NavComponent>

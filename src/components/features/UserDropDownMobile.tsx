@@ -78,6 +78,57 @@ const UserDropdownMobile = () => {
 
 const StyledWrapper = styled.div`
   .popup {
+    --burger-line-width: 1.125em;
+    --burger-line-height: 0.125em;
+    --burger-offset: 0.625em;
+    --burger-bg: #120808;
+    --burger-color: #333;
+    --burger-line-border-radius: 0.1875em;
+    --burger-diameter: 3.125em;
+    --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
+    --burger-line-transition: 0.3s;
+    --burger-transition: all 0.5s ease-in-out;
+    --burger-hover-scale: 1.1;
+    --burger-active-scale: 0.95;
+    --burger-enable-outline-color: var(--burger-bg);
+    --burger-enable-outline-width: 0.125em;
+    --burger-enable-outline-offset: var(--burger-enable-outline-width);
+    /* nav */
+    --nav-padding-x: 0.25em;
+    --nav-padding-y: 0.625em;
+    --nav-border-radius: 0.375em;
+    --nav-border-color: #ccc;
+    --nav-border-width: 0.0625em;
+    --nav-shadow-color: rgba(0, 0, 0, 0.2);
+    --nav-shadow-width: 0 1px 5px;
+    --nav-bg: #C7BCAE;
+    --nav-font-family: "Poppins", sans-serif;
+    --nav-default-scale: 0.8;
+    --nav-active-scale: 1;
+    --nav-position-left: -10em;
+    --nav-position-right: unset;
+    /* if you want to change sides just switch one property */
+    /* from properties to "unset" and the other to 0 */
+    /* title */
+    --nav-title-size: 0.625em;
+    --nav-title-color: #777;
+    --nav-title-padding-x: 1rem;
+    --nav-title-padding-y: 0.25em;
+    /* nav button */
+    --nav-button-padding-x: 1rem;
+    --nav-button-padding-y: 0.375em;
+    --nav-button-border-radius: 0.375em;
+    --nav-button-font-size: 17px;
+    --nav-button-hover-bg: #9b9393;
+    --nav-button-hover-text-color: #fff;
+    --nav-button-distance: 0.875em;
+    /* underline */
+    --underline-border-width: 0.0625em;
+    --underline-border-color: #ccc;
+    --underline-margin-y: 0.3125em;
+  }
+
+  .popup {
     position: relative;
   }
 
@@ -95,8 +146,9 @@ const StyledWrapper = styled.div`
   }
 
   .popup-window {
+    transform: scale(var(--nav-default-scale));
     position: fixed;
-    top: 7.5vh;
+    top: 6.9vh;
     right: 0;
     background-color: rgba(26, 26, 26, 0.78); 
     padding: 1rem;
@@ -168,11 +220,18 @@ const StyledWrapper = styled.div`
       font-size: 0.9rem;
     }
   }
-    @media(min-width:1024px){
-      .popup{
+  @media(min-width:1024px){
+    .popup{
         display:none;
-      }
+        display: inline-block;
+        text-rendering: optimizeLegibility;
     }
+    .popup input {
+      display: none;
+    }
+  }
+  
+
 `;
 
 export default UserDropdownMobile;

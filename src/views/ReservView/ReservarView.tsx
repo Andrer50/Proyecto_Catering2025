@@ -6,6 +6,7 @@ import { ReservPredetermined } from "@/components/layouts/ReservComponents/ProcP
 import { ReservCustomized } from "@/components/layouts/ReservComponents/ProcCustomized/ReservCustomized";
 import { useState, useEffect } from "react";
 import { SelectOptionForm } from "@/components/layouts/ReservComponents/SelectOptionForm";
+import { HeaderComponent } from "@/components/layouts/HeaderComponents/HeaderComponent";
 
 export const ReservarView = () => {
   //State to control the selection of Left or Right button
@@ -32,33 +33,37 @@ export const ReservarView = () => {
   return (
     <>
       <div className={styles.MainArea}>
-        <NavComponent></NavComponent>
+        <div className={styles.Header}>
+          <HeaderComponent></HeaderComponent>
+        </div>
+        <div className={styles.NavArea}>
+          <NavComponent></NavComponent>
+          <h1>Reservaciones</h1>
+        </div>
         <div className={styles.ContainerForm}>
-          <div className={styles.Area}>
-            <div className={styles.InteractionArea}>
-              {/*According to the selected button, load a form*/}
-              {!isMounted && (
-                <SelectOptionForm
-                  onSelectOption={(option) => {
-                    setSelectedOption(option);
-                    setIsMounted(true); // Al seleccionar, ocultamos SelectOptionForm y mostramos el formulario
-                  }}
-                />
-              )}
+          <div className={styles.InteractionArea}>
+            {/*According to the selected button, load a form*/}
+            {!isMounted && (
+              <SelectOptionForm
+                onSelectOption={(option) => {
+                  setSelectedOption(option);
+                  setIsMounted(true); // Al seleccionar, ocultamos SelectOptionForm y mostramos el formulario
+                }}
+              />
+            )}
 
-              {isMounted && selectedOption === "predeterminado" ? (
-                <ReservPredetermined
-                  onCardToggle={handleCardToggle}
-                  isCardExpanded={isCardExpanded}
-                  onBack={() => setIsMounted(false)}
-                />
-              ) : isMounted && selectedOption === "personalizado" ? (
-                <ReservCustomized
-                  onCardToggle={handleCardToggle}
-                  isCardExpanded={isCardExpanded}
-                />
-              ) : null}
-            </div>
+            {isMounted && selectedOption === "predeterminado" ? (
+              <ReservPredetermined
+                onCardToggle={handleCardToggle}
+                isCardExpanded={isCardExpanded}
+                onBack={() => setIsMounted(false)}
+              />
+            ) : isMounted && selectedOption === "personalizado" ? (
+              <ReservCustomized
+                onCardToggle={handleCardToggle}
+                isCardExpanded={isCardExpanded}
+              />
+            ) : null}
           </div>
         </div>
       </div>

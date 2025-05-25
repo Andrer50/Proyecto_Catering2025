@@ -5,7 +5,6 @@ import "font-awesome/css/font-awesome.min.css";
 export const HeaderComponent = () => {
   return (
     <>
-      <div className={styles.layout}></div>
       <header className={styles.Header}>
         <ul>
           <li>

@@ -10,7 +10,9 @@ import { HeaderComponent } from "@/components/layouts/HeaderComponents/HeaderCom
 export const NosotrosView = () => {
   return (
     <div className="page-container">
-      <HeaderComponent></HeaderComponent>
+      <div className="header">
+        <HeaderComponent></HeaderComponent>
+      </div>
       <div className="container-area">
         <NavComponent></NavComponent>
         <div className="area-information">

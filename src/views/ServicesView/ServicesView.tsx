@@ -7,7 +7,9 @@ export const ServicesView = () => {
   return (
     <>
       <div className={styles.MainArea}>
-        <HeaderComponent></HeaderComponent>
+        <div className={styles.Header}>
+          <HeaderComponent></HeaderComponent>
+        </div>
         <div className={styles.ContainerArea}>
           <NavComponent></NavComponent>
           <div className={styles.ServicesArea}>

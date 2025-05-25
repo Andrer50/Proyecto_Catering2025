@@ -17,6 +17,7 @@ import NavBarComponent from "@/components/features/NavBarComponent";
 import { useRouter } from "next/router";
 import UserDropdownMobile from "@/components/features/UserDropDownMobile";
 import clsx from "clsx";
+import UserDropdownMenu from "@/components/features/UserDropDownMenu";
 
 interface NavComponentProps {
   isCardExpanded: boolean;
@@ -103,8 +104,7 @@ export const NavComponent = () => {
 
             <div className={styles.LoginArea}>
               {/*<LoginButtom onClick={() => setShowLogin(true)} />*/}
-              <UserDropdown></UserDropdown>
-              <UserDropdownMobile></UserDropdownMobile>
+              <UserDropdownMenu></UserDropdownMenu>
             </div>
           </div>
         </div>

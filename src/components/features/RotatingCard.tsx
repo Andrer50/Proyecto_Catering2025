@@ -25,7 +25,7 @@ const RotatingCard: React.FC<RotatingCardProps> = ({
               backgroundImage: `url(${imageBackground})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundColor: "rgba(0, 0, 0, 0.4)", // oscurece
+              backgroundColor: "rgba(0, 0, 0, 0.6)", // oscurece
               backgroundBlendMode: "darken",
             }}
           >
@@ -44,14 +44,13 @@ const RotatingCard: React.FC<RotatingCardProps> = ({
 const StyledWrapper = styled.div`
   .flip-card {
     background-color: transparent;
-    width: 190px;
-    height: 254px;
-    perspective: 1000px;
-    font-family: sans-serif;
+    width: 35vh;
+    height: 35vh;
   }
 
   .title {
-    font-size: 1.3em;
+    font-family: "Italiana", sans-serif;
+    font-size: 4vh;
     font-weight: 900;
     text-align: center;
     margin: 0;
@@ -85,6 +84,7 @@ const StyledWrapper = styled.div`
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1rem;
+    font-family: "Abel", serif;
   }
 
   .flip-card-front {
@@ -95,6 +95,19 @@ const StyledWrapper = styled.div`
     background: rgba(219, 216, 216, 0.91);
     color: black;
     transform: rotateY(180deg);
+  }
+
+  @media (min-width: 600px) {
+    .flip-card {
+      width: 40vh;
+      height: 40vh;
+    }
+  }
+  @media (min-width: 1024px) {
+    .flip-card {
+      width: 50vh;
+      height: 50vh;
+    }
   }
 `;
 
