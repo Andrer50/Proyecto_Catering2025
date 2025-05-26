@@ -2,64 +2,66 @@
 .MainArea {
   display: flex;
   flex-direction: column;
+  height: 15vh;
+
+  z-index: 50;
+}
+.Scrolled {
+  background-color: rgba(26, 26, 26, 0.9); /* Cambia a lo que prefieras */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .NavMainArea {
   display: flex;
   width: 100vw;
-  height: 15vh;
   justify-content: space-between; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   z-index: 1;
-  background-color: #c7bcae;
-  border-bottom: 3px solid black;
+  position: fixed;
+  padding-top: 2vh;
 }
 .LayoutNav {
   display: none;
-  height: 15vh;
 }
 .NavAndButtom {
   display: flex;
-  height: 100%;
   width: 35rem;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .NavArea {
-  padding: 0.1rem 1rem; /* Espacio dentro del nav */
-  width: 35rem;
+  display: flex;
+  width: 55vh;
+
   height: 100%;
 }
 
 .NavRowArea {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
-}
-.NavItem {
-  display: flex;
-  height: 100%;
-  width: 100%;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  gap: 7vh;
+  padding: 0;
+  margin: 0;
+}
+.NavItem {
+  height: 100%;
+  padding: 0;
+  margin: 0;
   font-family: "Tienne", sans-serif;
-  font-optical-sizing: auto;
   list-style: none;
   font-weight: 500;
 }
-.NavItem:hover {
-  background-color: #585d61;
-  transition: 0.5s;
-}
 
 .NavItem a:hover {
-  color: #120808;
+  color: #666666;
   transition: 0.3s;
 }
 .NavItem a {
   text-decoration: none;
-  color: #020101;
+  color: white;
+  display: flex;
 }
 
 /*Button Login Area*/
@@ -85,38 +87,40 @@
   justify-content: center;
   text-align: center;
   color: white;
-  background-color: #020101;
+  background-color: transparent;
   cursor: pointer;
-  z-index: 1000;
-  border: 1px solid black;
+
+  border: 1px white solid;
   border-radius: 0.3em;
 }
 
 .MobileMenu {
   display: none;
-  background-color: #c7bcae;
   flex-direction: column;
   position: fixed;
   z-index: 999;
+  background-color: rgba(26, 26, 26, 0.78);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .MobileMenu a {
   display: flex;
   justify-content: start;
   align-items: center;
-  font-family: "Tienne", sans-serif;
+  font-family: "Italiana", sans-serif;
   height: 100%;
   padding: 0.5em;
-  color: #020101;
-  border-bottom: 1px solid #ccc;
+  color: white;
   text-decoration: none;
 }
 .MobileMenu a:hover {
-  background-color: #bda689;
+  background-color: rgba(17, 17, 17, 0.6);
+  border-radius: 12px;
 }
 /*Celular*/
 @media (min-width: 220px) {
   .LayoutNav {
     display: flex;
+    height: 15vh;
   }
   .NavMainArea {
     position: fixed;
@@ -141,13 +145,13 @@
   .Hamburger {
     display: flex;
     width: 7vh;
-    height: 6vh;
-    font-size: 3.5vh;
+    height: 7vh;
+    font-size: 4.3vh;
   }
 
   .MobileMenu {
     display: flex;
-    top: 15vh;
+    top: 21vh;
     left: 0;
     width: 100vw;
     padding: 1em;
@@ -182,7 +186,7 @@
 /*Laptops*/
 @media (min-width: 1024px) {
   .LayoutNav {
-    display: flex;
+    display: none;
   }
   .NavMainArea {
     padding-inline: 2em;
@@ -199,7 +203,6 @@
   }
   .NavAndButtom {
     width: 90vh;
-    gap: 2vh;
   }
   .NavRowArea {
     width: 70vh;
@@ -209,31 +212,5 @@
   }
 }
 /*Desktops*/
-@media (min-width: 1280px) {
-  .NavAndButtom {
-    gap: 2vh;
-  }
-
-  .NavItem {
-    height: 100%;
-    width: 70%;
-    font-weight: 500;
-    font-size: 1.5vw;
-  }
-  .logo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .LogoArea {
-    display: flex;
-    justify-content: center;
-    margin-left: 1em;
-    align-items: center;
-    width: 9rem;
-    height: 9rem;
-  }
-  .LoginArea {
-    margin-right: 1em;
-  }
+@media (min-width: 1240px) {
 }

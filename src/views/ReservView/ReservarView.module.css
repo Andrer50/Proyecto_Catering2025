@@ -1,72 +1,44 @@
 .MainArea {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
   position: relative;
   z-index: auto;
 }
+.Header {
+  display: flex;
+  height: 6vh;
+}
+.NavArea {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+    url(../../assets/images/ImageMainOriginal.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.NavArea h1 {
+  display: flex;
+  padding-top: 4vh;
+  width: 100vw;
+  justify-content: center;
+  font-family: "Italiana", sans-serif;
+  font-size: 4vh;
+  color: white;
+}
 .ContainerForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 85vh;
+  height: auto;
   width: 100vw;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../../assets/images/Background-Reserv.jpg);
-  background-repeat: no-repeat;
-  object-fit: cover;
-  background-position: center;
-  background-size: 100%;
 }
-.Area {
-  display: flex;
-  margin: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: url(../../assets/images/LibroPNGDark-Photoroom.png);
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 84%;
-  padding: 1em;
-}
-.OptionsArea {
-  display: flex;
-  background-color: none;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 7vh;
-  width: 50vw;
 
-  border-radius: 15px;
-  backdrop-filter: blur(15px);
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-.LeftButton,
-.RightButton {
-  background-color: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 14em;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 15px;
-  transition: all 0.3s ease-in-out;
-}
-.LeftButton:hover,
-.RightButton:hover {
-  background-color: rgba(29, 28, 27, 0.658);
-  color: white;
-  transform: scale(
-    1.05
-  ); /* Add a slight increase in size when passing the mouse */
-}
 .InteractionArea {
   background-color: none;
+  height: auto;
 }
 .Selected {
   background-color: rgba(29, 28, 27, 0.658);
@@ -83,4 +55,15 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 9996;
+}
+
+@media (min-width: 600px) {
+  .NavArea h1 {
+    font-size: 6vh;
+  }
+}
+@media (min-width: 1024px) {
+  .NavArea {
+    height: 40vh;
+  }
 }

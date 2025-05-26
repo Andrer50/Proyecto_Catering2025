@@ -10,68 +10,133 @@ interface UsuarioInfoP {
   correo: string;
 }
 
-const UsuarioInfoo: React.FC<UsuarioInfoP> = ({
-  nombre,
-  apellidos,
-  telefono,
-  dni,
-  direccion: direccionInicial,
-  correo,
-}) => {
-  const [direccion, setDireccion] = useState(direccionInicial);
-  const [editando, setEditando] = useState(false);
+const UsuarioInfoo: React.FC<UsuarioInfoP> = (props) => {
+  const [modoEdicion, setModoEdicion] = useState(false);
+  const [usuario, setUsuario] = useState({ ...props });
 
-  if (!nombre || !apellidos || !telefono || !dni || !direccion || !correo) {
-    return <p className="mensaje">Faltan datos del usuario.</p>;
-  }
-
-  const handleDireccionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDireccion(e.target.value);
+  const manejarCambio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUsuario({ ...usuario, [name]: value });
   };
 
-  const toggleEditar = () => {
-    // Guardar datos 
-    setEditando(!editando);
+  const guardarCambios = () => {
+    console.log("Datos actualizados:", usuario);
+    setModoEdicion(false);
+  };
+
+  const cancelarCambios = () => {
+    setUsuario({ ...props });
+    setModoEdicion(false);
   };
 
   return (
-    <div className="usuario-formulario">
-      <h2>Información del Usuario</h2>
-      <form>
-        <div className="form-group">
-          <label>Nombre</label>
-          <input type="text" value={nombre} readOnly />
+    <div className="usuario-tarjeta">
+      {/*1*/}
+      <div className="fila">
+        <div className="col">
+          <span className="etiqueta">Nombres</span>
+          {modoEdicion ? (
+            <input
+              className="dato"
+              name="nombre"
+              value={usuario.nombre}
+              onChange={manejarCambio}
+            />
+          ) : (
+            <p className="dato">{usuario.nombre}</p>
+          )}
         </div>
-        <div className="form-group">
-          <label>Apellidos</label>
-          <input type="text" value={apellidos} readOnly />
+        <div className="col">
+          <span className="etiqueta">Apellidos</span>
+          {modoEdicion ? (
+            <input
+              className="dato"
+              name="apellidos"
+              value={usuario.apellidos}
+              onChange={manejarCambio}
+            />
+          ) : (
+            <p className="dato">{usuario.apellidos}</p>
+          )}
         </div>
-        <div className="form-group">
-          <label>Teléfono</label>
-          <input type="text" value={telefono} readOnly />
-        </div>
-        <div className="form-group">
-          <label>DNI</label>
-          <input type="text" value={dni} readOnly />
-        </div>
-        <div className="form-group">
-          <label>Dirección</label>
-          <input
-            type="text"
-            value={direccion}
-            onChange={handleDireccionChange}
-            readOnly={!editando}
-          />
-        </div>
-        <div className="form-group">
-          <label>Correo</label>
-          <input type="text" value={correo} readOnly />
-        </div>
+      </div>
 
-        <button type="button" className="boton-editar" onClick={toggleEditar}>
-          {editando ? "Guardar Dirección" : "Modificar Dirección"}
-        </button>
-      </form>
+      {/*2*/}
+      <div className="fila">
+        <div className="col">
+          <span className="etiqueta">Tipo de Documento</span>
+          <p className="dato">DNI</p>
+        </div>
+        <div className="col">
+          <span className="etiqueta">Número de Documento</span>
+          <p className="dato">{usuario.dni}</p> {/* DNI no editable */}
+        </div>
+      </div>
+
+      {/*3*/}
+      <div className="fila">
+        <div className="col">
+          <span className="etiqueta">Celular</span>
+          {modoEdicion ? (
+            <input
+              className="dato"
+              name="telefono"
+              value={usuario.telefono}
+              onChange={manejarCambio}
+            />
+          ) : (
+            <p className="dato">{usuario.telefono}</p>
+          )}
+        </div>
+        <div className="col">
+          <span className="etiqueta">Correo electrónico</span>
+          {modoEdicion ? (
+            <input
+              className="dato"
+              name="correo"
+              value={usuario.correo}
+              onChange={manejarCambio}
+            />
+          ) : (
+            <p className="dato">{usuario.correo}</p>
+          )}
+        </div>
+      </div>
+
+      {/*4*/}
+      <div className="fila">
+        <div className="col">
+          <span className="etiqueta">Dirección</span>
+          {modoEdicion ? (
+            <input
+              className="dato"
+              name="direccion"
+              value={usuario.direccion}
+              onChange={manejarCambio}
+            />
+          ) : (
+            <p className="dato">{usuario.direccion}</p>
+          )}
+        </div>
+        <div className="col">
+          <span className="etiqueta">Fecha de registro</span>
+          <p className="dato">29-01-2023</p>
+        </div>
+      </div>
+
+      {/* BOTONES */}
+      <div className="botones" style={{ marginTop: "30px", textAlign: "right" }}>
+        {modoEdicion ? (
+          <>
+            <button className="cancelar" onClick={cancelarCambios}>
+              Cancelar
+            </button>
+            <button onClick={guardarCambios}>Guardar</button>
+          </>
+        ) : (
+          <button onClick={() => setModoEdicion(true)}>Modificar Datos</button>
+        )}
+      </div>
     </div>
   );
 };

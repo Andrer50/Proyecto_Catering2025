@@ -12,15 +12,15 @@ export const SelectOptionForm = ({
   return (
     <>
       <div className={styles.InteractionArea}>
+        <div className={styles.TextArea}>
+          <h1>Elige tu opción de Reserva</h1>
+          <p>
+            Reserva ahora nuestros paquetes establecidos sofisticadamente para
+            todo gusto, u opta por una reserva personalizada desde la comodidad
+            de tu hogar!
+          </p>
+        </div>
         <div className={styles.LayoutArea}>
-          <div className={styles.TextArea}>
-            <h1>Elige tu opción de Reserva</h1>
-            <p>
-              Reserva ahora nuestros paquetes establecidos sofisticadamente para
-              todo gusto, u opta por una reserva personalizada desde la
-              comodidad de tu hogar!
-            </p>
-          </div>
           <div className={styles.CardsArea}>
             {/*According to the select option, a process is shown*/}
             <div onClick={() => onSelectOption("predeterminado")}>
