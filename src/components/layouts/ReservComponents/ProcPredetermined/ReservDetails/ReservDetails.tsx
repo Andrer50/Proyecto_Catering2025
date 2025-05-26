@@ -1,78 +1,56 @@
 import React from "react";
 import styles from "./ReservDetails.module.css";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import ButtonPrevious from "@/components/features/ButtonPrevious";
 import ButtonNext from "@/components/features/ButtonNext";
 import Card from "@/components/features/Card";
+import { Pedido } from "@/components/Interfaces/Pedido";
 
 interface ReservDetailsProps {
-  servicio: menuPackage;
-  datos: {
-    tipoEvento: string;
-    telefono: string;
-    fecha: string;
-    distrito: string;
-    hora: string;
-    direccion: string;
-  };
   onBack: () => void;
-  onSubmitFinal: (reserva: {
-    tipoEvento: string;
-    telefono: string;
-    fecha: string;
-    distrito: string;
-    hora: string;
-    direccion: string;
-    servicio: menuPackage;
-  }) => void;
+  pedido: Pedido;
+  onSubmitFinal: () => void;
 }
 export const ReservDetails: React.FC<ReservDetailsProps> = ({
-  servicio,
-  datos,
   onBack,
+  pedido,
   onSubmitFinal,
 }) => {
-  //Function to handle the submit
-  const handleSubmit = () => {
-    onSubmitFinal({
-      ...datos,
-      servicio,
-    });
-    console.log("Datos Guardados con éxito", datos);
-  };
   return (
     <>
       <div className={styles.InteractionArea}>
         <div className={styles.ServiceInfo}>
           <h2>Servicio Seleccionado</h2>
-          <Card servicio={servicio} />
+          <Card menu={pedido.infoMenu} />
         </div>
         <div className={styles.DetailsArea}>
           <h1>Resumen de la Reserva</h1>
           <p>
-            <strong>Servicio:</strong> {servicio.title}
+            <strong>Codigo del Pedido:</strong> {pedido.idPedido}
           </p>
           <p>
-            <strong>Tipo de Evento:</strong> {datos.tipoEvento}
+            <strong>Tipo de Evento:</strong> {pedido.datosEvento.tipoEvento}
           </p>
           <p>
-            <strong>Teléfono:</strong> {datos.telefono}
+            <strong>Teléfono:</strong> {pedido.datosEvento.telefono}
           </p>
           <p>
-            <strong>Fecha del Evento:</strong> {datos.fecha}
+            <strong>Fecha del Evento:</strong>{" "}
+            {pedido.datosEvento.fechaEvento.toLocaleDateString()}
           </p>
           <p>
-            <strong>Distrito:</strong> {datos.distrito}
+            <strong>Hora de Inicio:</strong>{" "}
+            {pedido.datosEvento.horaInicio.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </p>
           <p>
-            <strong>Hora de Inicio:</strong> {datos.hora}
-          </p>
-          <p>
-            <strong>Dirección del Evento:</strong> {datos.direccion}
+            <strong>Dirección del Evento:</strong>{" "}
+            {pedido.datosEvento.direccion}
           </p>
           <div className={styles.ButtonArea}>
             <ButtonPrevious texto="Anterior" onClick={onBack} />
-            <ButtonNext texto="Reservar" onClick={handleSubmit} />
+            <ButtonNext texto="Reservar" onClick={onSubmitFinal} />
           </div>
         </div>
       </div>

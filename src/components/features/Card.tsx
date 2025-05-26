@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { menuPackage } from "../Interfaces/MenuPackage";
+import { InfoMenu } from "../Interfaces/InfoMenu";
 
-const Card = ({ servicio }: { servicio: menuPackage }) => {
+const Card = ({ menu }: { menu: InfoMenu }) => {
   return (
     <StyledWrapper>
       <div className="card">
-        <img className="img" src={servicio.imageUrl}></img>
+        <img className="img" src={menu.imageURL}></img>
         <div className="textBox">
-          <p className="text head">{servicio.title}</p>
-          <span>{servicio.description}</span>
-          <p className="text price">{servicio.price}</p>
+          <p className="text head">{menu.title}</p>
+          <span>{menu.description}</span>
+          <p className="text price">{menu.price}</p>
         </div>
       </div>
     </StyledWrapper>

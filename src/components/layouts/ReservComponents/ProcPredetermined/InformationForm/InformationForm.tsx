@@ -1,61 +1,52 @@
 import React from "react";
 import styles from "./InformationForm.module.css";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import Card from "@/components/features/Card";
 import ButtonPrevious from "@/components/features/ButtonPrevious";
 import ButtonNext from "@/components/features/ButtonNext";
 import { useState } from "react";
-import { FormData } from "@/components/Interfaces/FormDataDefault";
+import { InfoMenu } from "@/components/Interfaces/InfoMenu";
+import { DatosEvento } from "@/components/Interfaces/DatosEvento";
+import { Pedido } from "@/components/Interfaces/Pedido";
 
 interface Props {
-  servicio: menuPackage;
-  initialValues: FormData;
-  onNext: (data: FormData) => void;
+  pedido: Pedido;
+  onNext: (data: DatosEvento) => void;
   onBack: () => void;
 }
 
 export const InformationForm: React.FC<Props> = ({
-  servicio,
-  initialValues,
+  pedido,
   onNext,
   onBack,
 }) => {
-  //State that inherits the initial values
-  const [tipoEvento, setTipoEvento] = useState(initialValues.tipoEvento);
-  const [telefono, setTelefono] = useState(initialValues.telefono);
-  const [fecha, setFecha] = useState(initialValues.fecha);
-  const [distrito, setDistrito] = useState(initialValues.distrito);
-  const [hora, setHora] = useState(initialValues.hora);
-  const [direccion, setDireccion] = useState(initialValues.direccion);
+  const [datosEvento, setDatosEvento] = useState(pedido.datosEvento);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { id, value } = e.target;
+    setDatosEvento((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
   //Function to control the inputs
   const handleNext = () => {
-    if (
-      !tipoEvento ||
-      !telefono ||
-      !fecha ||
-      !distrito ||
-      !hora ||
-      !direccion
-    ) {
+    const { tipoEvento, telefono, fechaEvento, horaInicio, direccion } =
+      datosEvento;
+    if (!tipoEvento || !telefono || !fechaEvento || !horaInicio || !direccion) {
       alert("Por favor completa todos los campos");
-      console.log("Faltan campos: ", {
-        tipoEvento,
-        telefono,
-        fecha,
-        distrito,
-        hora,
-        direccion,
-      });
       return;
     }
-    onNext({ tipoEvento, telefono, fecha, distrito, hora, direccion });
+    onNext(datosEvento);
   };
+
   return (
     <div className={styles.InteractionArea}>
       <div className={styles.ServiceInfo}>
-        <h2>Servicio Seleccionado</h2>
+        <h2>Menú Seleccionado</h2>
         {/*Show Service Selected */}
-        <Card servicio={servicio} />
+        <Card menu={pedido.infoMenu} />
       </div>
 
       <form className={styles.FormArea} onSubmit={(e) => e.preventDefault()}>
@@ -67,8 +58,8 @@ export const InformationForm: React.FC<Props> = ({
               <input
                 id="tipoEvento"
                 placeholder="--Selecciona--"
-                value={tipoEvento}
-                onChange={(e) => setTipoEvento(e.target.value)}
+                value={datosEvento.tipoEvento}
+                onChange={handleChange}
               />
             </div>
 
@@ -77,8 +68,8 @@ export const InformationForm: React.FC<Props> = ({
               <input
                 id="numberTelephone"
                 placeholder="+51"
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
+                value={datosEvento.telefono}
+                onChange={handleChange}
               />
             </div>
 
@@ -87,8 +78,13 @@ export const InformationForm: React.FC<Props> = ({
               <input
                 id="fechaEvento"
                 type="date"
-                value={fecha}
-                onChange={(e) => setFecha(e.target.value)}
+                value={datosEvento.fechaEvento.toString().split("T")[0]} // para formato YYYY-MM-DD
+                onChange={(e) =>
+                  setDatosEvento((prev) => ({
+                    ...prev,
+                    fechaEvento: new Date(e.target.value),
+                  }))
+                }
               />
             </div>
 
@@ -97,17 +93,18 @@ export const InformationForm: React.FC<Props> = ({
               <select
                 className={styles.SelectDistrict}
                 id="district"
-                value={distrito}
-                onChange={(e) => setDistrito(e.target.value)}
+                value={datosEvento.direccion}
+                onChange={handleChange}
               >
                 <option value="" disabled>
                   --Selecciona un distrito--
                 </option>
-                <option value="miraflores">Miraflores</option>
-                <option value="sanIsidro">San Isidro</option>
-                <option value="surco">Surco</option>
-                <option value="barranco">Barranco</option>
-                <option value="laMolina">La Molina</option>
+                <option value="los-olivos">Los Olivos</option>
+                <option value="comas">Comas</option>
+                <option value="puente-piedra">Puente Piedra</option>
+                <option value="carabayllo">Carabayllo</option>
+                <option value="smp">San Martín de Porres</option>
+                <option value="independencia">Independencia</option>
               </select>
             </div>
 
@@ -116,8 +113,13 @@ export const InformationForm: React.FC<Props> = ({
               <input
                 id="horaInicio"
                 type="time"
-                value={hora}
-                onChange={(e) => setHora(e.target.value)}
+                value={datosEvento.horaInicio.toString().substring(11, 16)} // HH:MM
+                onChange={(e) =>
+                  setDatosEvento((prev) => ({
+                    ...prev,
+                    fechaEvento: new Date(e.target.value),
+                  }))
+                }
               />
             </div>
 
@@ -126,8 +128,8 @@ export const InformationForm: React.FC<Props> = ({
               <input
                 id="direccionEvento"
                 placeholder="Dirección del evento"
-                value={direccion}
-                onChange={(e) => setDireccion(e.target.value)}
+                value={datosEvento.direccion}
+                onChange={handleChange}
               />
             </div>
           </div>

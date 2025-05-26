@@ -3,7 +3,7 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "../ui/use-outside-click";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
+import { InfoMenu } from "../Interfaces/InfoMenu";
 
 export function ExpandableCardDemo({
   onCardToggle,
@@ -12,13 +12,13 @@ export function ExpandableCardDemo({
 }: {
   onCardToggle: () => void;
   isCardExpanded: boolean;
-  onSeleccionar: (card: menuPackage) => void;
+  onSeleccionar: (card: InfoMenu) => void;
 }) {
   /*Active save the current state of the active card (the expanded). It can be an object of Cards, False or Null. */
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );
-  const [cards, setCards] = useState<menuPackage[]>([]);
+  const [cards, setCards] = useState<InfoMenu[]>([]);
   /*
   ref: Reference to the expanded card (to know if you click outside it).
   id: Unique ID for animations between elements using Framor-Motion.
@@ -26,9 +26,9 @@ export function ExpandableCardDemo({
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
   useEffect(() => {
-    fetch("http://localhost:8080/menuPackage")
+    fetch("http://localhost:8080/InfoMenu")
       .then((res) => res.json())
-      .then((data: menuPackage[]) => {
+      .then((data: InfoMenu[]) => {
         console.log("Contenido real de la respuesta:", data); //  Verify that it is an array
         setCards(data);
       })
@@ -111,7 +111,7 @@ export function ExpandableCardDemo({
                 <img
                   width={200}
                   height={200}
-                  src={active.imageUrl}
+                  src={active.imageURL}
                   alt={active.title}
                   className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top "
                 />
@@ -183,7 +183,7 @@ export function ExpandableCardDemo({
                 <img
                   width={100}
                   height={100}
-                  src={card.imageUrl}
+                  src={card.imageURL}
                   alt={card.title}
                   className="h-10 w-10 md:h-10 md:w-10 rounded-lg object-cover object-top"
                 />
@@ -196,7 +196,7 @@ export function ExpandableCardDemo({
                   {card.title}
                 </motion.h3>
                 <motion.p className="text-black text-[14px] dark:text-neutral-400 text-center md:text-left">
-                  {card.category}
+                  {card.tipoServicio.config?.tipo}
                 </motion.p>
               </div>
             </div>

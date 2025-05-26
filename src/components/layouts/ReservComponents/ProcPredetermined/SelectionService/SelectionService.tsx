@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./SelectionService.module.css";
 import { ExpandableCardDemo } from "@/components/features/expandible-card-demo";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import ButtonPrevious from "@/components/features/ButtonPrevious";
+import { InfoMenu } from "@/components/Interfaces/InfoMenu";
 
 interface SelectionServiceProps {
-  onSeleccionar: (card: menuPackage) => void;
+  onSeleccionar: (card: InfoMenu) => void;
   isCardExpanded: boolean;
   onCardToggle: () => void;
   onBack: () => void;

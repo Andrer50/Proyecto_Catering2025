@@ -2,15 +2,12 @@ import React from "react";
 import { FirstForm } from "./FirstForm/FirstForm";
 import { useState } from "react";
 import SelectionType from "./SelectionType/SelectionType";
+import { Pedido } from "@/components/Interfaces/Pedido";
 
 interface ReservCustomProps {
   onCardToggle: () => void;
   isCardExpanded: boolean;
   onBack: () => void;
-}
-export interface ReservaData {
-  servicio: menuType | null;
-  datosEvento: FormData;
 }
 
 export const ReservCustomized: React.FC<ReservCustomProps> = ({
@@ -18,34 +15,83 @@ export const ReservCustomized: React.FC<ReservCustomProps> = ({
   isCardExpanded,
   onBack,
 }) => {
-  const [step, setStep] = useState<1 | 2>(1);
-  const [reserva, setReserva] = useState<ReservaDataCustomized>({
-    servicio: null,
+  const [step, setStep] = useState(1);
+  const [pedido, setPedido] = useState<Pedido>({
+    idPedido: 0,
+    cliente: {
+      // Asumiendo que tienes definida esta interfaz y objeto Cliente adecuado
+      idCliente: 10,
+      nombre: "",
+      email: "",
+      telefono: "",
+    }, // Y demás campos que tengas en Cliente...},
     datosEvento: {
+      idDatosEvento: 0,
       tipoEvento: "",
       telefono: "",
-      fecha: "",
-      distrito: "",
-      hora: "",
       direccion: "",
+      horaInicio: new Date(""),
+      cantHoras: 0,
+      fechaEvento: new Date(""),
     },
+    infoMenu: {
+      idInfoMenu: 0,
+      tipoServicio: {
+        idTipoServicio: 0,
+        nombre: "",
+        config: null,
+      },
+      // config: ... (según corresponda)},
+      detailExtra: {
+        idDetailExtra: 0,
+        detailExtraInfo: [],
+      },
+      detailPersonal: {
+        idDetailPersonal: 9,
+        detailPersonalInfo: [],
+      },
+      title: "",
+      description: "",
+      price: 0,
+      imageURL: "",
+    },
+    estado: "Nuevo",
   });
-  const [datosReserva, setDatosReserva] = useState({
-    tipoEvento: "",
-    telefono: "",
-    fecha: "",
-    distrito: "",
-    hora: "",
-    direccion: "",
-    cantHoras: "",
-  });
-  const handleDatosEvento = (data: FormData) => {
-    setReserva((prev) => ({
+  const avanzar = () => setStep((p) => p + 1);
+  const retroceder = () => setStep((p) => p - 1);
+
+  const actualizarPedido = (nuevo: Partial<Pedido>) => {
+    setPedido((prev) => ({
       ...prev,
-      datosEvento: data,
+      ...nuevo,
+      cliente: {
+        ...prev.cliente,
+        ...(nuevo.cliente || {}),
+      },
+      datosEvento: {
+        ...prev.datosEvento,
+        ...(nuevo.datosEvento || {}),
+      },
+      infoMenu: {
+        ...prev.infoMenu,
+        ...(nuevo.infoMenu || {}),
+        tipoServicio: {
+          ...prev.infoMenu.tipoServicio,
+          ...(nuevo.infoMenu?.tipoServicio || {}),
+          config:
+            nuevo.infoMenu?.tipoServicio?.config ??
+            prev.infoMenu.tipoServicio.config,
+        },
+        detailExtra: {
+          ...prev.infoMenu.detailExtra,
+          ...(nuevo.infoMenu?.detailExtra || {}),
+        },
+        detailPersonal: {
+          ...prev.infoMenu.detailPersonal,
+          ...(nuevo.infoMenu?.detailPersonal || {}),
+        },
+      },
     }));
-    setDatosReserva(data);
-    setStep(3);
   };
   return (
     <>

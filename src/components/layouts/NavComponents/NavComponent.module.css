@@ -213,4 +213,7 @@
 }
 /*Desktops*/
 @media (min-width: 1240px) {
+  .NavItem {
+    font-size: 1.2vw;
+  }
 }

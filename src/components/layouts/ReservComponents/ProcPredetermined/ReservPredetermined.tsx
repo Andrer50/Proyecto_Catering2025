@@ -2,22 +2,19 @@
 import React, { useState } from "react";
 import { SelectionService } from "./SelectionService/SelectionService";
 import { InformationForm } from "./InformationForm/InformationForm";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import { ReservDetails } from "./ReservDetails/ReservDetails";
-import { FormData } from "@/components/Interfaces/FormDataDefault";
 import { ReservConfirmation } from "./ReservConfirmation/ReservConfirmation";
 import { IconHttpOptions } from "@tabler/icons-react";
 import { SelectOptionForm } from "../SelectOptionForm";
+import { Pedido } from "@/components/Interfaces/Pedido";
+import { InfoMenu } from "@/components/Interfaces/InfoMenu";
 
 interface ReservProcProps {
   onCardToggle: () => void;
   isCardExpanded: boolean;
   onBack: () => void;
 }
-export interface ReservaData {
-  servicio: menuPackage | null;
-  datosEvento: FormData;
-}
+
 export const ReservPredetermined: React.FC<ReservProcProps> = ({
   onCardToggle,
   isCardExpanded,
@@ -26,48 +23,93 @@ export const ReservPredetermined: React.FC<ReservProcProps> = ({
   //State to control the steps
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   //State to control the Data
-  const [reserva, setReserva] = useState<ReservaData>({
-    servicio: null,
+  const [pedido, setPedido] = useState<Pedido>({
+    idPedido: 0,
+    cliente: {
+      // Asumiendo que tienes definida esta interfaz y objeto Cliente adecuado
+      idCliente: 10,
+      nombre: "",
+      email: "",
+      telefono: "",
+    }, // Y demás campos que tengas en Cliente...},
     datosEvento: {
+      idDatosEvento: 0,
       tipoEvento: "",
       telefono: "",
-      fecha: "",
-      distrito: "",
-      hora: "",
       direccion: "",
+      horaInicio: new Date(""),
+      cantHoras: 0,
+      fechaEvento: new Date(""),
     },
+    infoMenu: {
+      idInfoMenu: 0,
+      tipoServicio: {
+        idTipoServicio: 0,
+        nombre: "",
+        config: null,
+      },
+      // config: ... (según corresponda)},
+      detailExtra: {
+        idDetailExtra: 0,
+        detailExtraInfo: [],
+      },
+      detailPersonal: {
+        idDetailPersonal: 9,
+        detailPersonalInfo: [],
+      },
+      title: "",
+      description: "",
+      price: 0,
+      imageURL: "",
+    },
+    estado: "Nuevo",
   });
-  //Function to take the selected menu to the next step
-  const handleServiceSelected = (menu: menuPackage) => {
-    setReserva((prev) => ({ ...prev, servicio: menu }));
-    setStep(2);
-    {
-      console.log(menu);
-    }
-  };
-  const [datosReserva, setDatosReserva] = useState({
-    tipoEvento: "",
-    telefono: "",
-    fecha: "",
-    distrito: "",
-    hora: "",
-    direccion: "",
-  });
-  //Function to take the Data Event to the next step
-  const handleDatosEvento = (data: FormData) => {
-    setReserva((prev) => ({
+
+  // 1) Cuando se selecciona un servicio/paquete, actualizamos solo el infoMenu.tipoServicio
+  const handleInfoMenuSelected = (infoMenu: InfoMenu) => {
+    setPedido((prev) => ({
       ...prev,
-      datosEvento: data,
+      infoMenu,
     }));
-    setDatosReserva(data);
+    setStep(2);
+  };
+
+  // 2) Cuando se llenan datos del evento, actualizamos solo datosEvento
+  const handleDatosEvento = (datosEvento: Pedido["datosEvento"]) => {
+    setPedido((prev) => ({
+      ...prev,
+      datosEvento,
+    }));
     setStep(3);
   };
 
   const handleBackToStep1 = () => setStep(1);
   const handleBackToStep2 = () => setStep(2);
   //function to handle the submit final
-  const handleSubmitFinal = (reservaFinal: any) => {
-    setStep(4);
+  const handleSubmitFinal = async () => {
+    try {
+      // Aquí haces el POST o envío del pedido
+      const response = await fetch("/api/pedidos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(pedido),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar el pedido");
+      }
+
+      const data = await response.json();
+      console.log("Pedido creado con éxito:", data);
+
+      // Opcional: cambiar al paso final (confirmación)
+      setStep(4);
+    } catch (error) {
+      console.error("Error en el submit final:", error);
+      alert("Ocurrió un error al procesar la reserva. Intenta nuevamente.");
+    }
   };
   return (
     <>
@@ -75,32 +117,30 @@ export const ReservPredetermined: React.FC<ReservProcProps> = ({
       {step === 1 && (
         <SelectionService
           //When the first form is finished, it goes to the second
-          onSeleccionar={handleServiceSelected}
+          onSeleccionar={handleInfoMenuSelected}
           onCardToggle={onCardToggle}
           isCardExpanded={isCardExpanded}
           onBack={onBack}
         />
       )}
-      {step === 2 && reserva.servicio && (
+      {step === 2 && pedido.infoMenu.idInfoMenu !== 0 && (
         <InformationForm
           /*We pass the service to the following component */
-          servicio={reserva.servicio}
-          initialValues={datosReserva}
+          pedido={pedido}
           onNext={handleDatosEvento}
           onBack={handleBackToStep1}
         />
       )}
-      {step === 3 && reserva.servicio && (
+      {step === 3 && pedido.datosEvento.idDatosEvento !== 0 && (
         <ReservDetails
           /*We pass the service to the following component */
-          servicio={reserva.servicio}
-          datos={datosReserva}
+          pedido={pedido}
           onBack={handleBackToStep2}
           onSubmitFinal={handleSubmitFinal}
         ></ReservDetails>
       )}
-      {step === 4 && reserva.servicio && (
-        <ReservConfirmation servicio={reserva.servicio}></ReservConfirmation>
+      {step === 4 && pedido.datosEvento.idDatosEvento !== 0 && (
+        <ReservConfirmation menu={pedido.infoMenu}></ReservConfirmation>
       )}
     </>
   );

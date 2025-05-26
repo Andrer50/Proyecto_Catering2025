@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./ReservConfirmation.module.css";
-import { menuPackage } from "@/components/Interfaces/MenuPackage";
 import Card from "@/components/features/Card";
 import check from "@/assets/images/Check.png";
 import ButtonNext from "@/components/features/ButtonNext";
 import { useRouter } from "next/navigation";
+import { InfoMenu } from "@/components/Interfaces/InfoMenu";
 
 interface ReservConfirmationProps {
-  servicio: menuPackage;
+  menu: InfoMenu;
 }
 
 export const ReservConfirmation: React.FC<ReservConfirmationProps> = ({
-  servicio,
+  menu,
 }) => {
   const router = useRouter();
   const goToHistorial = () => {
@@ -40,7 +40,7 @@ export const ReservConfirmation: React.FC<ReservConfirmationProps> = ({
             ></ButtonNext>
           </div>
           <div className={styles.ServiceInfo}>
-            <Card servicio={servicio} />
+            <Card menu={menu} />
           </div>
         </div>
       </div>
