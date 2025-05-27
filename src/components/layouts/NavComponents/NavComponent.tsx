@@ -3,11 +3,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import styles from "./NavComponent.module.css";
 import logo from "../../../assets/images/Logo Blanco.png";
-import imageCarouselMobile1 from "@/assets/images/ImageMobileCarousel1.png";
-import imageCarouselMobile2 from "@/assets/images/ImageMobileCarousel2.png";
-import imageCarouselMobile3 from "@/assets/images/ImageMobileCarousel3.png";
-import imageCarouselMobile4 from "@/assets/images/ImageMobileCarousel4.png";
-import imageCarouselMobile5 from "@/assets/images/ImageMobileCarousel5.png";
+
 import { LoginButtom } from "../LoginComponents/LoginButtom";
 import Link from "next/link";
 import { UserButton } from "../LoginComponents/UserButton";
